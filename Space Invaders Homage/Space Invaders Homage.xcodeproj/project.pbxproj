@@ -1,0 +1,593 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D0403C822C615D6300B0B725 /* Space_Invaders_HomageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0403C812C615D6300B0B725 /* Space_Invaders_HomageApp.swift */; };
+		D0403C842C615D6300B0B725 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0403C832C615D6300B0B725 /* ContentView.swift */; };
+		D0403C862C615D6500B0B725 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0403C852C615D6500B0B725 /* Assets.xcassets */; };
+		D0403C892C615D6500B0B725 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0403C882C615D6500B0B725 /* Preview Assets.xcassets */; };
+		D0403C932C615D6500B0B725 /* Space_Invaders_HomageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0403C922C615D6500B0B725 /* Space_Invaders_HomageTests.swift */; };
+		D0403C9D2C615D6500B0B725 /* Space_Invaders_HomageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0403C9C2C615D6500B0B725 /* Space_Invaders_HomageUITests.swift */; };
+		D0403C9F2C615D6500B0B725 /* Space_Invaders_HomageUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0403C9E2C615D6500B0B725 /* Space_Invaders_HomageUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D0403C8F2C615D6500B0B725 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0403C762C615D6300B0B725 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D0403C7D2C615D6300B0B725;
+			remoteInfo = "Space Invaders Homage";
+		};
+		D0403C992C615D6500B0B725 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0403C762C615D6300B0B725 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D0403C7D2C615D6300B0B725;
+			remoteInfo = "Space Invaders Homage";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D0403C7E2C615D6300B0B725 /* Space Invaders Homage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Space Invaders Homage.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0403C812C615D6300B0B725 /* Space_Invaders_HomageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Space_Invaders_HomageApp.swift; sourceTree = "<group>"; };
+		D0403C832C615D6300B0B725 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D0403C852C615D6500B0B725 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D0403C882C615D6500B0B725 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D0403C8E2C615D6500B0B725 /* Space Invaders HomageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Space Invaders HomageTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0403C922C615D6500B0B725 /* Space_Invaders_HomageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Space_Invaders_HomageTests.swift; sourceTree = "<group>"; };
+		D0403C982C615D6500B0B725 /* Space Invaders HomageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Space Invaders HomageUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0403C9C2C615D6500B0B725 /* Space_Invaders_HomageUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Space_Invaders_HomageUITests.swift; sourceTree = "<group>"; };
+		D0403C9E2C615D6500B0B725 /* Space_Invaders_HomageUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Space_Invaders_HomageUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D0403C7B2C615D6300B0B725 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0403C8B2C615D6500B0B725 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0403C952C615D6500B0B725 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D0403C752C615D6300B0B725 = {
+			isa = PBXGroup;
+			children = (
+				D0403C802C615D6300B0B725 /* Space Invaders Homage */,
+				D0403C912C615D6500B0B725 /* Space Invaders HomageTests */,
+				D0403C9B2C615D6500B0B725 /* Space Invaders HomageUITests */,
+				D0403C7F2C615D6300B0B725 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D0403C7F2C615D6300B0B725 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D0403C7E2C615D6300B0B725 /* Space Invaders Homage.app */,
+				D0403C8E2C615D6500B0B725 /* Space Invaders HomageTests.xctest */,
+				D0403C982C615D6500B0B725 /* Space Invaders HomageUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D0403C802C615D6300B0B725 /* Space Invaders Homage */ = {
+			isa = PBXGroup;
+			children = (
+				D0403C812C615D6300B0B725 /* Space_Invaders_HomageApp.swift */,
+				D0403C832C615D6300B0B725 /* ContentView.swift */,
+				D0403C852C615D6500B0B725 /* Assets.xcassets */,
+				D0403C872C615D6500B0B725 /* Preview Content */,
+			);
+			path = "Space Invaders Homage";
+			sourceTree = "<group>";
+		};
+		D0403C872C615D6500B0B725 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				D0403C882C615D6500B0B725 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D0403C912C615D6500B0B725 /* Space Invaders HomageTests */ = {
+			isa = PBXGroup;
+			children = (
+				D0403C922C615D6500B0B725 /* Space_Invaders_HomageTests.swift */,
+			);
+			path = "Space Invaders HomageTests";
+			sourceTree = "<group>";
+		};
+		D0403C9B2C615D6500B0B725 /* Space Invaders HomageUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D0403C9C2C615D6500B0B725 /* Space_Invaders_HomageUITests.swift */,
+				D0403C9E2C615D6500B0B725 /* Space_Invaders_HomageUITestsLaunchTests.swift */,
+			);
+			path = "Space Invaders HomageUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D0403C7D2C615D6300B0B725 /* Space Invaders Homage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0403CA22C615D6500B0B725 /* Build configuration list for PBXNativeTarget "Space Invaders Homage" */;
+			buildPhases = (
+				D0403C7A2C615D6300B0B725 /* Sources */,
+				D0403C7B2C615D6300B0B725 /* Frameworks */,
+				D0403C7C2C615D6300B0B725 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Space Invaders Homage";
+			productName = "Space Invaders Homage";
+			productReference = D0403C7E2C615D6300B0B725 /* Space Invaders Homage.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D0403C8D2C615D6500B0B725 /* Space Invaders HomageTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0403CA52C615D6500B0B725 /* Build configuration list for PBXNativeTarget "Space Invaders HomageTests" */;
+			buildPhases = (
+				D0403C8A2C615D6500B0B725 /* Sources */,
+				D0403C8B2C615D6500B0B725 /* Frameworks */,
+				D0403C8C2C615D6500B0B725 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D0403C902C615D6500B0B725 /* PBXTargetDependency */,
+			);
+			name = "Space Invaders HomageTests";
+			productName = "Space Invaders HomageTests";
+			productReference = D0403C8E2C615D6500B0B725 /* Space Invaders HomageTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D0403C972C615D6500B0B725 /* Space Invaders HomageUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0403CA82C615D6500B0B725 /* Build configuration list for PBXNativeTarget "Space Invaders HomageUITests" */;
+			buildPhases = (
+				D0403C942C615D6500B0B725 /* Sources */,
+				D0403C952C615D6500B0B725 /* Frameworks */,
+				D0403C962C615D6500B0B725 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D0403C9A2C615D6500B0B725 /* PBXTargetDependency */,
+			);
+			name = "Space Invaders HomageUITests";
+			productName = "Space Invaders HomageUITests";
+			productReference = D0403C982C615D6500B0B725 /* Space Invaders HomageUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D0403C762C615D6300B0B725 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					D0403C7D2C615D6300B0B725 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					D0403C8D2C615D6500B0B725 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = D0403C7D2C615D6300B0B725;
+					};
+					D0403C972C615D6500B0B725 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = D0403C7D2C615D6300B0B725;
+					};
+				};
+			};
+			buildConfigurationList = D0403C792C615D6300B0B725 /* Build configuration list for PBXProject "Space Invaders Homage" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D0403C752C615D6300B0B725;
+			productRefGroup = D0403C7F2C615D6300B0B725 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D0403C7D2C615D6300B0B725 /* Space Invaders Homage */,
+				D0403C8D2C615D6500B0B725 /* Space Invaders HomageTests */,
+				D0403C972C615D6500B0B725 /* Space Invaders HomageUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D0403C7C2C615D6300B0B725 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0403C892C615D6500B0B725 /* Preview Assets.xcassets in Resources */,
+				D0403C862C615D6500B0B725 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0403C8C2C615D6500B0B725 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0403C962C615D6500B0B725 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D0403C7A2C615D6300B0B725 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0403C842C615D6300B0B725 /* ContentView.swift in Sources */,
+				D0403C822C615D6300B0B725 /* Space_Invaders_HomageApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0403C8A2C615D6500B0B725 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0403C932C615D6500B0B725 /* Space_Invaders_HomageTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0403C942C615D6500B0B725 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0403C9F2C615D6500B0B725 /* Space_Invaders_HomageUITestsLaunchTests.swift in Sources */,
+				D0403C9D2C615D6500B0B725 /* Space_Invaders_HomageUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D0403C902C615D6500B0B725 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D0403C7D2C615D6300B0B725 /* Space Invaders Homage */;
+			targetProxy = D0403C8F2C615D6500B0B725 /* PBXContainerItemProxy */;
+		};
+		D0403C9A2C615D6500B0B725 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D0403C7D2C615D6300B0B725 /* Space Invaders Homage */;
+			targetProxy = D0403C992C615D6500B0B725 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		D0403CA02C615D6500B0B725 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D0403CA12C615D6500B0B725 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D0403CA32C615D6500B0B725 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Space Invaders Homage/Preview Content\"";
+				DEVELOPMENT_TEAM = X5G5HHC458;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mandolineApps.Space-Invaders-Homage";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D0403CA42C615D6500B0B725 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Space Invaders Homage/Preview Content\"";
+				DEVELOPMENT_TEAM = X5G5HHC458;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mandolineApps.Space-Invaders-Homage";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D0403CA62C615D6500B0B725 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = X5G5HHC458;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mandolineApps.Space-Invaders-HomageTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Space Invaders Homage.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Space Invaders Homage";
+			};
+			name = Debug;
+		};
+		D0403CA72C615D6500B0B725 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = X5G5HHC458;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mandolineApps.Space-Invaders-HomageTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Space Invaders Homage.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Space Invaders Homage";
+			};
+			name = Release;
+		};
+		D0403CA92C615D6500B0B725 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = X5G5HHC458;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mandolineApps.Space-Invaders-HomageUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Space Invaders Homage";
+			};
+			name = Debug;
+		};
+		D0403CAA2C615D6500B0B725 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = X5G5HHC458;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mandolineApps.Space-Invaders-HomageUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Space Invaders Homage";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D0403C792C615D6300B0B725 /* Build configuration list for PBXProject "Space Invaders Homage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0403CA02C615D6500B0B725 /* Debug */,
+				D0403CA12C615D6500B0B725 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0403CA22C615D6500B0B725 /* Build configuration list for PBXNativeTarget "Space Invaders Homage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0403CA32C615D6500B0B725 /* Debug */,
+				D0403CA42C615D6500B0B725 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0403CA52C615D6500B0B725 /* Build configuration list for PBXNativeTarget "Space Invaders HomageTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0403CA62C615D6500B0B725 /* Debug */,
+				D0403CA72C615D6500B0B725 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0403CA82C615D6500B0B725 /* Build configuration list for PBXNativeTarget "Space Invaders HomageUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0403CA92C615D6500B0B725 /* Debug */,
+				D0403CAA2C615D6500B0B725 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D0403C762C615D6300B0B725 /* Project object */;
+}
