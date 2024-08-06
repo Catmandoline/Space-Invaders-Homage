@@ -15,7 +15,7 @@ class GameScene: SKScene {
     var player = SKSpriteNode(imageNamed: "playerShip")
     
     override func didMove(to view: SKView) {
-        scene?.size = CGSize(width: 480, height: 800)
+        scene?.size = CGSize(width: 400, height: 800)
         background.position = CGPoint(x: size.width / 2, y: size.height / 2)
         background.setScale(1.34)
         background.zPosition = 1
