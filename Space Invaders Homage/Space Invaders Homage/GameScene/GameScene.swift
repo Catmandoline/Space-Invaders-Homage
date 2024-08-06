@@ -30,12 +30,14 @@ class GameScene: SKScene {
     func makePlayer() {
         
         player.position = CGPoint(x: size.width / 2, y: 100)
+        player.setScale(0.5)
         player.zPosition = 10
         addChild(player)
     }
     
     @objc func shipFireFunction() {
         shipFire = .init(imageNamed: "projectile")
+        shipFire.setScale(0.2)
         shipFire.position = player.position
         shipFire.zPosition = 2
         
