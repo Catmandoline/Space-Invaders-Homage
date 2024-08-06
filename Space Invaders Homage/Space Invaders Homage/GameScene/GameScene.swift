@@ -17,7 +17,7 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         scene?.size = CGSize(width: 400, height: 800)
         background.position = CGPoint(x: size.width / 2, y: size.height / 2)
-        background.setScale(1.34)
+        background.size = self.size
         background.zPosition = 1
         addChild(background)
         makePlayer()

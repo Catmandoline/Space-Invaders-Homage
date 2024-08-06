@@ -10,12 +10,37 @@ import SpriteKit
 import GameKit
 
 struct ContentView: View {
+    @State private var showGameScene = false
+    @State private var playerName = ""
+    @State private var playersMaxScore = 0
     
-    let scene = GameScene()
     
     var body: some View {
-       SpriteView(scene: scene)
-            .ignoresSafeArea()
+        ZStack {
+            Image("background-contenview")
+                .resizable()
+                .scaledToFill()
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                .clipped()
+                .edgesIgnoringSafeArea(.all)
+            
+            if showGameScene {
+                SpriteView(scene: GameScene())
+                    .ignoresSafeArea()
+            }
+            
+            VStack {
+                Button("Spiel Starten") {
+                    showGameScene = true
+                }
+                .padding()
+                .background(Color.brown)
+                .foregroundColor(.white)
+                .cornerRadius(10)
+                .shadow(radius: 10)
+                .position(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height - 100)
+            }
+        }
     }
 }
 
