@@ -9,7 +9,7 @@ import SwiftUI
 import SpriteKit
 import GameKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let background = SKSpriteNode(imageNamed: "background-space")
     var player = SKSpriteNode(imageNamed: "playerShip")
@@ -27,6 +27,8 @@ class GameScene: SKScene {
     }
     
     override func didMove(to view: SKView) {
+        
+        physicsWorld.contactDelegate = self
         scene?.size = CGSize(width: 400, height: 800)
         background.position = CGPoint(x: size.width / 2, y: size.height / 2)
         background.size = self.size
@@ -76,6 +78,31 @@ class GameScene: SKScene {
         } while enemyCountInRow < 10
     }
     
+    func didBegin(_ contact: SKPhysicsContact) {
+        let contactA: SKPhysicsBody
+        let contactB: SKPhysicsBody
+        
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+            contactA = contact.bodyA
+            contactB = contact.bodyB
+        } else {
+            contactA = contact.bodyB
+            contactB = contact.bodyA
+        }
+        
+        if contactA.categoryBitMask == GameBitmask.shipFire && contactB.categoryBitMask == GameBitmask.enemy {
+            shipFIreHitEnemy(fires: contactA.node as! SKSpriteNode, enemies: contactB.node as! SKSpriteNode)
+        }
+        if contactA.categoryBitMask == GameBitmask.player && contactB.categoryBitMask == GameBitmask.enemy {
+            enemy.removeFromParent()
+            player.removeFromParent()
+        }
+    }
+    
+    func shipFIreHitEnemy(fires: SKSpriteNode, enemies: SKSpriteNode) {
+        fires.removeFromParent()
+        enemies.removeFromParent()
+    }
     func makePlayer() {
         
         player.position = CGPoint(x: size.width / 2, y: 70)
