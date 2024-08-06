@@ -12,6 +12,7 @@ import GameKit
 class GameScene: SKScene {
     
     let background = SKSpriteNode(imageNamed: "background-space")
+    var player = SKSpriteNode(imageNamed: "playerShip")
     
     override func didMove(to view: SKView) {
         scene?.size = CGSize(width: 480, height: 800)
@@ -19,6 +20,15 @@ class GameScene: SKScene {
         background.setScale(1.34)
         background.zPosition = 1
         addChild(background)
+        makePlayer()
+    }
+    
+    func makePlayer() {
+        
+        player.position = CGPoint(x: size.width / 2, y: 100)
+        player.zPosition = 10
+        addChild(player)
+        
     }
 }
 
