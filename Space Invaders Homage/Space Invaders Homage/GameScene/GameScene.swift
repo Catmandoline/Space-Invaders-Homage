@@ -35,42 +35,42 @@ class GameScene: SKScene {
         makePlayer()
         fireTimer = .scheduledTimer(timeInterval: 0.7, target: self, selector: #selector(shipFireFunction), userInfo: nil, repeats: true)
         repeat {
-            makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 700, image: "steamPunk-mob1")
+            makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 680, image: "steamPunk-mob1")
             enemyCountInRow += 1
             xAxisForEnemyRows += 35
         } while enemyCountInRow < 10
         enemyCountInRow = 0
         xAxisForEnemyRows = 25
         repeat {
-            makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 650, image: "steamPunk-mob2")
+            makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 630, image: "steamPunk-mob2")
             enemyCountInRow += 1
             xAxisForEnemyRows += 35
         } while enemyCountInRow < 10
         enemyCountInRow = 0
         xAxisForEnemyRows = 25
         repeat {
-            makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 600, image: "steamPunk-mob2")
+            makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 580, image: "steamPunk-mob2")
             enemyCountInRow += 1
             xAxisForEnemyRows += 35
         } while enemyCountInRow < 10
         enemyCountInRow = 0
         xAxisForEnemyRows = 25
         repeat {
-            makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 550, image: "steamPunk-mob3")
+            makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 530, image: "steamPunk-mob3")
             enemyCountInRow += 1
             xAxisForEnemyRows += 35
         } while enemyCountInRow < 10
         enemyCountInRow = 0
         xAxisForEnemyRows = 25
         repeat {
-            makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 500, image: "steamPunk-mob3")
+            makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 480, image: "steamPunk-mob3")
             enemyCountInRow += 1
             xAxisForEnemyRows += 35
         } while enemyCountInRow < 10
         enemyCountInRow = 0
         xAxisForEnemyRows = 25
         repeat {
-            makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 450, image: "steamPunk-mob3")
+            makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 430, image: "steamPunk-mob3")
             enemyCountInRow += 1
             xAxisForEnemyRows += 35
         } while enemyCountInRow < 10
@@ -78,7 +78,7 @@ class GameScene: SKScene {
     
     func makePlayer() {
         
-        player.position = CGPoint(x: size.width / 2, y: 100)
+        player.position = CGPoint(x: size.width / 2, y: 70)
         player.setScale(0.5)
         player.zPosition = 10
         player.physicsBody = SKPhysicsBody(rectangleOf: player.size)
