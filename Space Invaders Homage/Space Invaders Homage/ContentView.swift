@@ -11,6 +11,8 @@ import GameKit
 
 struct ContentView: View {
     @State private var showGameScene = false
+    @State private var showCountdown = false
+    @State private var countdownFinished = false
     @State private var playerName = ""
     @State private var playersMaxScore = 0
     @State private var playerLives = 3
@@ -30,7 +32,7 @@ struct ContentView: View {
                     Spacer()
                     
                     Button("Spiel Starten") {
-                        showGameScene = true
+                        showCountdown = true
                     }
                     .padding()
                     .background(Color.brown)
@@ -41,7 +43,11 @@ struct ContentView: View {
                 }
             }
             
-            if showGameScene {
+            if showCountdown {
+                            CountdownOverlay(countdownFinished: $countdownFinished, showCountDown: $showCountdown, showGameScene: $showGameScene)
+                        }
+            
+            if showGameScene && countdownFinished {
                 SpriteView(scene: GameScene())
                     .ignoresSafeArea()
                 
@@ -107,7 +113,38 @@ struct ContentView: View {
     }
 }
 
-
+struct CountdownOverlay: View {
+    @Binding var countdownFinished: Bool
+    @Binding var showCountDown: Bool
+    @Binding var showGameScene: Bool
+    @State private var countdown = 3
+    
+    var body: some View {
+        if countdown > 0 {
+            ZStack {
+                Color.black.opacity(0.4)
+                    .edgesIgnoringSafeArea(.all)
+                
+                Text("\(countdown)")
+                    .font(.system(size: 60))
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .onAppear {
+                        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+                            if countdown > 1 {
+                                countdown -= 1
+                            } else {
+                                timer.invalidate()
+                                countdownFinished = true
+                                showCountDown = false
+                                showGameScene = true
+                            }
+                        }
+                    }
+            }
+        }
+    }
+}
 
 #Preview {
     ContentView()
