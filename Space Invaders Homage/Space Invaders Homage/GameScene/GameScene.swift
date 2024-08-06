@@ -91,18 +91,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if contactA.categoryBitMask == GameBitmask.shipFire && contactB.categoryBitMask == GameBitmask.enemy {
-            shipFIreHitEnemy(fires: contactA.node as! SKSpriteNode, enemies: contactB.node as! SKSpriteNode)
+            shipFireHitEnemy(fires: contactA.node as! SKSpriteNode, enemies: contactB.node as! SKSpriteNode)
         }
         if contactA.categoryBitMask == GameBitmask.player && contactB.categoryBitMask == GameBitmask.enemy {
             enemy.removeFromParent()
             player.removeFromParent()
+            fireTimer.invalidate()
         }
     }
     
-    func shipFIreHitEnemy(fires: SKSpriteNode, enemies: SKSpriteNode) {
+    func shipFireHitEnemy(fires: SKSpriteNode, enemies: SKSpriteNode) {
         fires.removeFromParent()
         enemies.removeFromParent()
     }
+    
     func makePlayer() {
         
         player.position = CGPoint(x: size.width / 2, y: 70)
@@ -149,6 +151,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         enemy.physicsBody?.collisionBitMask = GameBitmask.player | GameBitmask.shipFire
         
         addChild(enemy)
+        
+        let moveRight = SKAction.move(by: CGVector(dx: 40, dy: 0), duration: 6)
+        let moveDown = SKAction.move(by: CGVector(dx: 0, dy: -20), duration: 4)
+        let moveLeft = SKAction.move(by: CGVector(dx: -40, dy: 0), duration: 6)
+        let combinedMovement = SKAction.sequence([moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown])
+        
+        enemy.run(combinedMovement)
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
