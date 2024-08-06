@@ -27,7 +27,6 @@ struct ContentView: View {
                     .edgesIgnoringSafeArea(.all)
                 
                 VStack {
-                    
                     Spacer()
                     
                     Button("Spiel Starten") {
@@ -45,34 +44,69 @@ struct ContentView: View {
             if showGameScene {
                 SpriteView(scene: GameScene())
                     .ignoresSafeArea()
-                HStack {
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 10)
-                            .frame(maxWidth: 120, maxHeight: 30)
-                            .foregroundColor(.brown)
-                        Text("Score: \(playerScore)")
-                            .foregroundColor(.white)
-                            .padding()
-                    }
-                    Spacer()
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 10)
-                            .frame(maxWidth: 120, maxHeight: 30)
-                            .foregroundColor(.brown)
-                    
-                        Text("Lives: \(playerLives)")
-                            .foregroundColor(.white)
-                            
-                    }
-                    
-                }
-                .padding(.horizontal, 10)
-                Spacer()
                 
+                VStack {
+                    VStack{
+                        HStack {
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 10)
+                                    .frame(maxWidth: 120, maxHeight: 30)
+                                    .foregroundColor(.brown)
+                                    .opacity(0.8)
+                                Text("HighScore: \(playersMaxScore)")
+                                    .foregroundColor(.white)
+                            }
+                            Spacer()
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 10)
+                                    .frame(maxWidth: 120, maxHeight: 30)
+                                    .foregroundColor(.brown)
+                                    .opacity(0.8)
+                                Text("Lives: \(playerLives)")
+                                    .foregroundColor(.white)
+                            }
+                        }
+                        .padding(.top, 14)
+                        
+                        HStack {
+                            // Unsichtbarer Platzhalter
+                            Button(action: {}) {
+                                Image(systemName: "pause")
+                                    .font(.title)
+                                    .padding()
+                                    .background(Color.clear)
+                                    .clipShape(Circle())
+                                    .foregroundColor(.clear)
+                                    .shadow(radius: 10)
+                            }
+                            Spacer()
+                            Text("\(playerScore)")
+                                .font(.system(size: 24)) // Größere Schriftgröße
+                                .foregroundColor(.yellow) // Andere Farbe
+                            Spacer()
+                            Button(action: {
+                                showGameScene = false
+                            }) {
+                                Image(systemName: "power")
+                                    .font(.title)
+                                    .padding()
+                                    .background(Color.clear)
+                                    .clipShape(Circle())
+                                    .foregroundColor(.brown)
+                                    .shadow(radius: 10)
+                            }
+                        }
+                        .padding(.leading, 8)
+                        .padding(.top, -8)
+                    }
+                    .edgesIgnoringSafeArea(.top)
+                    Spacer()
+                }
             }
         }
     }
 }
+
 
 
 #Preview {
