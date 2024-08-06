@@ -103,6 +103,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func shipFireHitEnemy(fires: SKSpriteNode, enemies: SKSpriteNode) {
         fires.removeFromParent()
         enemies.removeFromParent()
+        
+        let explo = SKSpriteNode(fileNamed: "Explosion")
+        explo?.position = enemies.position
+        explo?.zPosition = 5
+        
+        addChild(explo!)
     }
     
     func makePlayer() {
