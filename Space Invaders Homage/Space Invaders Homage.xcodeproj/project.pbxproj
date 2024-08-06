@@ -14,6 +14,7 @@
 		D0403C932C615D6500B0B725 /* Space_Invaders_HomageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0403C922C615D6500B0B725 /* Space_Invaders_HomageTests.swift */; };
 		D0403C9D2C615D6500B0B725 /* Space_Invaders_HomageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0403C9C2C615D6500B0B725 /* Space_Invaders_HomageUITests.swift */; };
 		D0403C9F2C615D6500B0B725 /* Space_Invaders_HomageUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0403C9E2C615D6500B0B725 /* Space_Invaders_HomageUITestsLaunchTests.swift */; };
+		D0403CB12C6220F200B0B725 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0403CB02C6220F200B0B725 /* GameScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		D0403C982C615D6500B0B725 /* Space Invaders HomageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Space Invaders HomageUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0403C9C2C615D6500B0B725 /* Space_Invaders_HomageUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Space_Invaders_HomageUITests.swift; sourceTree = "<group>"; };
 		D0403C9E2C615D6500B0B725 /* Space_Invaders_HomageUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Space_Invaders_HomageUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D0403CB02C6220F200B0B725 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 		D0403C802C615D6300B0B725 /* Space Invaders Homage */ = {
 			isa = PBXGroup;
 			children = (
+				D0403CAF2C6220E400B0B725 /* GameScene */,
 				D0403C812C615D6300B0B725 /* Space_Invaders_HomageApp.swift */,
 				D0403C832C615D6300B0B725 /* ContentView.swift */,
 				D0403C852C615D6500B0B725 /* Assets.xcassets */,
@@ -125,6 +128,14 @@
 				D0403C9E2C615D6500B0B725 /* Space_Invaders_HomageUITestsLaunchTests.swift */,
 			);
 			path = "Space Invaders HomageUITests";
+			sourceTree = "<group>";
+		};
+		D0403CAF2C6220E400B0B725 /* GameScene */ = {
+			isa = PBXGroup;
+			children = (
+				D0403CB02C6220F200B0B725 /* GameScene.swift */,
+			);
+			path = GameScene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0403CB12C6220F200B0B725 /* GameScene.swift in Sources */,
 				D0403C842C615D6300B0B725 /* ContentView.swift in Sources */,
 				D0403C822C615D6300B0B725 /* Space_Invaders_HomageApp.swift in Sources */,
 			);
@@ -437,9 +449,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mandolineApps.Space-Invaders-Homage";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -466,9 +482,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mandolineApps.Space-Invaders-Homage";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
