@@ -10,17 +10,17 @@ import SpriteKit
 import GameKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
-   var playerScore : Binding<Int>
+    var playerScore : Binding<Int>
     
     init(size: CGSize, playerScore: Binding<Int>) {
         self.playerScore = playerScore
         super.init(size: size)
-    
-        }
+        
+    }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-        
+    
     
     let background = SKSpriteNode(imageNamed: "background-space")
     var player = SKSpriteNode(imageNamed: "playerShip")
@@ -49,42 +49,42 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         makePlayer()
         fireTimer = .scheduledTimer(timeInterval: 0.7, target: self, selector: #selector(shipFireFunction), userInfo: nil, repeats: true)
         repeat {
-            makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 680, image: "steamPunk-mob1")
+            makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 680, image: "steamPunk-mob1", hitPoints: 3, scoreValue: 30)
             enemyCountInRow += 1
             xAxisForEnemyRows += 35
         } while enemyCountInRow < 10
         enemyCountInRow = 0
         xAxisForEnemyRows = 25
         repeat {
-            makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 630, image: "steamPunk-mob2")
+            makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 630, image: "steamPunk-mob2", hitPoints: 2, scoreValue: 20)
             enemyCountInRow += 1
             xAxisForEnemyRows += 35
         } while enemyCountInRow < 10
         enemyCountInRow = 0
         xAxisForEnemyRows = 25
         repeat {
-            makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 580, image: "steamPunk-mob2")
+            makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 580, image: "steamPunk-mob2", hitPoints: 2, scoreValue: 20)
             enemyCountInRow += 1
             xAxisForEnemyRows += 35
         } while enemyCountInRow < 10
         enemyCountInRow = 0
         xAxisForEnemyRows = 25
         repeat {
-            makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 530, image: "steamPunk-mob3")
+            makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 530, image: "steamPunk-mob3", hitPoints: 1, scoreValue: 10)
             enemyCountInRow += 1
             xAxisForEnemyRows += 35
         } while enemyCountInRow < 10
         enemyCountInRow = 0
         xAxisForEnemyRows = 25
         repeat {
-            makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 480, image: "steamPunk-mob3")
+            makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 480, image: "steamPunk-mob3", hitPoints: 1, scoreValue: 10)
             enemyCountInRow += 1
             xAxisForEnemyRows += 35
         } while enemyCountInRow < 10
         enemyCountInRow = 0
         xAxisForEnemyRows = 25
         repeat {
-            makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 430, image: "steamPunk-mob3")
+            makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 430, image: "steamPunk-mob3", hitPoints: 1, scoreValue: 10)
             enemyCountInRow += 1
             xAxisForEnemyRows += 35
         } while enemyCountInRow < 10
@@ -103,7 +103,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if contactA.categoryBitMask == GameBitmask.shipFire && contactB.categoryBitMask == GameBitmask.enemy {
-            shipFireHitEnemy(fires: contactA.node as! SKSpriteNode, enemies: contactB.node as! SKSpriteNode)
+            shipFireHitEnemy(fires: contactA.node as! SKSpriteNode, enemies: contactB.node as! Mob)
         }
         if contactA.categoryBitMask == GameBitmask.player && contactB.categoryBitMask == GameBitmask.enemy {
             enemy.removeFromParent()
@@ -112,21 +112,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func shipFireHitEnemy(fires: SKSpriteNode, enemies: SKSpriteNode) {
-            fires.removeFromParent()
-            enemies.removeFromParent()
-            
-            let explo = SKSpriteNode(fileNamed: "Explosion")
-            explo?.position = enemies.position
-            explo?.zPosition = 5
-            
-            addChild(explo!)
+    func shipFireHitEnemy(fires: SKSpriteNode, enemies: Mob) {
+        fires.removeFromParent()
+        enemies.hit()
         
-            run(hitSound)
-
-            playerScore.wrappedValue += 1 // Increase the score when an enemy is hit
+        if enemies.parent == nil {
+            playerScore.wrappedValue += enemies.scoreValue
         }
-
+        
+        let explo = SKSpriteNode(fileNamed: "Explosion")
+        explo?.position = enemies.position
+        explo?.zPosition = 5
+        
+        addChild(explo!)
+        
+        run(hitSound)
+        
+    }
+    
     
     func makePlayer() {
         
@@ -162,8 +165,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         shipFire.run(combine)
     }
     
-    @objc func makeEnemieRow(xAxis: Double, yAxis: Double, image: String) {
-        enemy = .init(imageNamed: image)
+    @objc func makeEnemieRow(xAxis: Double, yAxis: Double, image: String, hitPoints: Int, scoreValue: Int) {
+        let enemy = Mob(imageNamed: image, hitPoints: hitPoints, scoreValue: scoreValue)
         enemy.position = CGPoint(x: xAxis, y: yAxis)
         enemy.zPosition = 5
         enemy.setScale(0.13)
@@ -172,7 +175,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         enemy.physicsBody?.categoryBitMask = GameBitmask.enemy
         enemy.physicsBody?.contactTestBitMask = GameBitmask.player | GameBitmask.shipFire
         enemy.physicsBody?.collisionBitMask = GameBitmask.player | GameBitmask.shipFire
-        
+
         addChild(enemy)
         
         let moveRight = SKAction.move(by: CGVector(dx: 40, dy: 0), duration: 6)
