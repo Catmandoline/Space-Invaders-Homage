@@ -15,8 +15,8 @@ struct ContentView: View {
     @State private var countdownFinished = false
     @State private var playerName = ""
     @State private var playersMaxScore = 0
-    @State private var playerLives = 3
-    @State private var playerScore = 0
+    @State public var playerLives = 3
+    @State public var playerScore = 0
     
     var body: some View {
         ZStack {
@@ -48,7 +48,7 @@ struct ContentView: View {
                         }
             
             if showGameScene && countdownFinished {
-                SpriteView(scene: GameScene())
+                SpriteView(scene: GameScene(size: CGSize(width: 400, height: 800), playerScore: $playerScore))
                     .ignoresSafeArea()
                 
                 VStack {

@@ -10,6 +10,17 @@ import SpriteKit
 import GameKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
+   var playerScore : Binding<Int>
+    
+    init(size: CGSize, playerScore: Binding<Int>) {
+        self.playerScore = playerScore
+        super.init(size: size)
+    
+        }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+        
     
     let background = SKSpriteNode(imageNamed: "background-space")
     var player = SKSpriteNode(imageNamed: "playerShip")
@@ -101,15 +112,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func shipFireHitEnemy(fires: SKSpriteNode, enemies: SKSpriteNode) {
-        fires.removeFromParent()
-        enemies.removeFromParent()
-        
-        let explo = SKSpriteNode(fileNamed: "Explosion")
-        explo?.position = enemies.position
-        explo?.zPosition = 5
-        
-        addChild(explo!)
-    }
+            fires.removeFromParent()
+            enemies.removeFromParent()
+            
+            let explo = SKSpriteNode(fileNamed: "Explosion")
+            explo?.position = enemies.position
+            explo?.zPosition = 5
+            
+            addChild(explo!)
+
+            playerScore.wrappedValue += 1 // Increase the score when an enemy is hit
+        }
+
     
     func makePlayer() {
         
@@ -173,6 +187,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             player.position.x = location.x
         }
     }
+    
 }
 
 #Preview {
