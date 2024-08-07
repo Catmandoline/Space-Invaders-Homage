@@ -9,67 +9,54 @@ import SwiftUI
 import SpriteKit
 import GameKit
 
-enum GameState {
-    case contentview
-    case gameplay
-    case gameover
-    case highscore
-}
 
 struct ContentView: View {
-    @State private var currentGameState: GameState = .contentview
-    @State private var showGameScene = false
-    @State private var showCountdown = false
-    @State private var countdownFinished = false
-    @State private var playerName = ""
-    @State private var playersMaxScore = 0
-    @State public var playerLives = 3
-    @State public var playerScore = 0
-    
+    @StateObject var viewModel = AppViewModel() // Erstelle eine Instanz von AppViewModel
+
     var body: some View {
-            ZStack {
-                Image("background-contenview")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-                    .clipped()
-                    .edgesIgnoringSafeArea(.all)
+        ZStack {
+            Image("background-contenview")
+                .resizable()
+                .scaledToFill()
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                .clipped()
+                .edgesIgnoringSafeArea(.all)
 
-                if showCountdown {
-                    CountdownOverlay(countdownFinished: $countdownFinished, showCountDown: $showCountdown, showGameScene: $showGameScene)
-                }
+            if viewModel.showCountdown {
+                CountdownOverlay(countdownFinished: $viewModel.countdownFinished, showCountDown: $viewModel.showCountdown, showGameScene: $viewModel.showGameScene)
+            }
 
-                switch currentGameState {
-                case .contentview:
-                    VStack {
-                        Spacer()
+            switch viewModel.currentGameState {
+            case .contentview:
+                VStack {
+                    Spacer()
 
-                        Button("Spiel Starten") {
-                            showCountdown = true
-                        }
-                        .padding()
-                        .background(Color.brown)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                        .shadow(radius: 10)
-                        .position(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height - 150)
+                    Button("Spiel Starten") {
+                        viewModel.showCountdown = true
                     }
-                
-            case .gameplay:
-                if countdownFinished {
-                    GameplayView(showGameScene: $showGameScene, countdownFinished: $countdownFinished, playerScore: $playerScore, playerLives: $playerLives, currentGameState: $currentGameState)
+                    .padding()
+                    .background(Color.brown)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+                    .shadow(radius: 10)
+                    .position(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height - 150)
                 }
-                
+
+            case .gameplay:
+                if viewModel.countdownFinished {
+                    GameplayView(viewModel: viewModel) // Gib die Instanz von AppViewModel an GameplayView weiter
+                }
+
             case .gameover:
                 GameOverView()
-                
+
             case .highscore:
                 HighScoreView()
             }
         }
-        .onChange(of: countdownFinished) {
-            if countdownFinished {
-                currentGameState = .gameplay
+        .onChange(of: viewModel.countdownFinished) {
+            if $0 {
+                viewModel.currentGameState = .gameplay
             }
         }
     }

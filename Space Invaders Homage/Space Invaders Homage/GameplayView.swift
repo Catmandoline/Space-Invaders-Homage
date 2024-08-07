@@ -9,16 +9,12 @@ import SwiftUI
 import SpriteKit
 
 struct GameplayView: View {
-    @Binding var showGameScene: Bool
-    @Binding var countdownFinished: Bool
-    @Binding var playerScore: Int
-    @Binding var playerLives: Int
-    @Binding var currentGameState: GameState
+    @ObservedObject var viewModel: AppViewModel
 
     var body: some View {
-        if showGameScene && countdownFinished {
-            SpriteView(scene: GameScene(size: CGSize(width: 400, height: 800), playerScore: $playerScore, playerLives: $playerLives))
-                .ignoresSafeArea()
+        if viewModel.showGameScene && viewModel.countdownFinished {
+            SpriteView(scene: GameScene(size: CGSize(width: 400, height: 800),playerScore: $viewModel.playerScore, playerLives: $viewModel.playerLives))
+                        .ignoresSafeArea()
             
             VStack {
                 VStack{
@@ -28,7 +24,7 @@ struct GameplayView: View {
                                 .frame(maxWidth: 120, maxHeight: 30)
                                 .foregroundColor(.brown)
                                 .opacity(0.8)
-                            Text("HighScore: \(playerLives)")
+                            Text("HighScore: \(viewModel.playerScore)") // Verwende viewModel.playerScore
                                 .foregroundColor(.white)
                         }
                         Spacer()
@@ -37,7 +33,7 @@ struct GameplayView: View {
                                 .frame(maxWidth: 120, maxHeight: 30)
                                 .foregroundColor(.brown)
                                 .opacity(0.8)
-                            Text("Lives: \(playerLives)")
+                            Text("Lives: \(viewModel.playerLives)") // Verwende viewModel.playerLives
                                 .foregroundColor(.white)
                         }
                     }
@@ -55,14 +51,14 @@ struct GameplayView: View {
                                 .shadow(radius: 10)
                         }
                         Spacer()
-                        Text("\(playerScore)")
-                            .font(.system(size: 24)) // Größere Schriftgröße
-                            .foregroundColor(.yellow) // Andere Farbe
+                        Text("\(viewModel.playerScore)")
+                            .font(.system(size: 24))
+                            .foregroundColor(.yellow)
                         Spacer()
                         Button(action: {
-                            self.currentGameState = .contentview
-                            self.countdownFinished = false
-                            self.playerScore = 0
+                            viewModel.currentGameState = .contentview
+                            viewModel.countdownFinished = false
+                            viewModel.resetGame()
                             
                         }) {
                             Image(systemName: "power")
