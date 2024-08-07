@@ -9,6 +9,14 @@ import SwiftUI
 import SpriteKit
 import GameKit
 
+struct GameBitmask {
+    static let player: UInt32 = 0b1         //1
+    static let shipFire: UInt32 = 0b10      //2
+    static let enemy: UInt32 = 0b100        //4
+    static let enemyFire: UInt32 = 0b1000   //8
+}
+
+
 class GameScene: SKScene, SKPhysicsContactDelegate {
     var playerScore : Binding<Int>
     var playerLives : Binding<Int>
@@ -32,13 +40,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var xAxisForEnemyRows: Double = 25
     var testCOunt: Int = 0
     var fireTimer = Timer()
+    var mobFireTimer: Timer?
     let hitSound = SKAction.playSoundFileNamed("enemyHit", waitForCompletion: false)
     
-    struct GameBitmask {
-        static let player: UInt32 = 0b1     //1
-        static let shipFire: UInt32 = 0b10  //2
-        static let enemy: UInt32 = 0b100    //4
-    }
+    
     
     override func didMove(to view: SKView) {
         
@@ -90,6 +95,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             enemyCountInRow += 1
             xAxisForEnemyRows += 35
         } while enemyCountInRow < 10
+        
+        mobFireTimer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true) { [weak self] _ in
+                self?.randomLivingMob()?.fire()
+            }
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -106,16 +115,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if contactA.categoryBitMask == GameBitmask.shipFire && contactB.categoryBitMask == GameBitmask.enemy {
             shipFireHitEnemy(fires: contactA.node as! SKSpriteNode, enemies: contactB.node as! Mob)
+        } else if contactA.categoryBitMask == GameBitmask.player && contactB.categoryBitMask == GameBitmask.enemy {
+            enemy.removeFromParent()
+            playerLives.wrappedValue -= 1 // Reduce player lives when the player is hit
+            if playerLives.wrappedValue <= 0 {
+                player.removeFromParent()
+                fireTimer.invalidate()
+                // Add any additional game over logic here
+            }
+        } else if contactA.categoryBitMask == GameBitmask.player && contactB.categoryBitMask == GameBitmask.enemyFire {
+            // Hier kannst du hinzufügen, was passiert, wenn das Feuer der Mobs den Spieler trifft
+            playerLives.wrappedValue -= 1 // Reduce player lives when the player is hit by enemy fire
+            if playerLives.wrappedValue <= 0 {
+                player.removeFromParent()
+                fireTimer.invalidate()
+                // Add any additional game over logic here
+            }
         }
-        if contactA.categoryBitMask == GameBitmask.player && contactB.categoryBitMask == GameBitmask.enemy {
-                    enemy.removeFromParent()
-                    playerLives.wrappedValue -= 1 // Reduce player lives when the player is hit
-                    if playerLives.wrappedValue <= 0 {
-                        player.removeFromParent()
-                        fireTimer.invalidate()
-                        // Add any additional game over logic here
-                    }
-                }
+    }
+    
+    func randomLivingMob() -> Mob? {
+        let livingMobs = children.compactMap { $0 as? Mob }.filter { $0.hitPoints > 0 }
+        return livingMobs.randomElement()
     }
     
     func shipFireHitEnemy(fires: SKSpriteNode, enemies: Mob) {
@@ -181,7 +202,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         enemy.physicsBody?.categoryBitMask = GameBitmask.enemy
         enemy.physicsBody?.contactTestBitMask = GameBitmask.player | GameBitmask.shipFire
         enemy.physicsBody?.collisionBitMask = GameBitmask.player | GameBitmask.shipFire
-
+        
         addChild(enemy)
         
         let moveRight = SKAction.move(by: CGVector(dx: 40, dy: 0), duration: 6)

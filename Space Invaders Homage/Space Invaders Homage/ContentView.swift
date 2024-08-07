@@ -57,7 +57,7 @@ struct ContentView: View {
                 
             case .gameplay:
                 if countdownFinished {
-                    GameplayView(showGameScene: $showGameScene, countdownFinished: $countdownFinished, playerScore: $playerScore, playerLives: $playerLives)
+                    GameplayView(showGameScene: $showGameScene, countdownFinished: $countdownFinished, playerScore: $playerScore, playerLives: $playerLives, currentGameState: $currentGameState)
                 }
                 
             case .gameover:

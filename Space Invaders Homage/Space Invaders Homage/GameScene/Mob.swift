@@ -12,6 +12,7 @@ import SpriteKit
 class Mob: SKSpriteNode {
     var hitPoints: Int
     var scoreValue: Int
+    var mobFire: SKSpriteNode?
     
     init(imageNamed: String, hitPoints: Int, scoreValue: Int) {
         self.hitPoints = hitPoints
@@ -30,4 +31,27 @@ class Mob: SKSpriteNode {
             removeFromParent()
         }
     }
+    
+    @objc func fire() {
+        mobFire = SKSpriteNode(imageNamed: "projectile")
+        mobFire?.position = self.position
+        mobFire?.zPosition = 5
+        mobFire?.physicsBody = SKPhysicsBody(rectangleOf: mobFire!.size)
+        mobFire?.physicsBody?.affectedByGravity = false
+        mobFire?.physicsBody?.categoryBitMask = GameBitmask.enemyFire
+        mobFire?.physicsBody?.contactTestBitMask = GameBitmask.player
+        mobFire?.physicsBody?.collisionBitMask = GameBitmask.player
+        
+        
+        let moveAction = SKAction.moveTo(y: -800, duration: 2)
+        let deleteAction = SKAction.removeFromParent()
+        let actionSequence = SKAction.sequence([moveAction, deleteAction])
+        
+        mobFire?.run(actionSequence)
+        
+        if let fire = mobFire {
+            self.parent?.addChild(fire)
+        }
+    }
+    
 }

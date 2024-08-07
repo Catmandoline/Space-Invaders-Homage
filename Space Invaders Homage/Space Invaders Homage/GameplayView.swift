@@ -13,6 +13,7 @@ struct GameplayView: View {
     @Binding var countdownFinished: Bool
     @Binding var playerScore: Int
     @Binding var playerLives: Int
+    @Binding var currentGameState: GameState
 
     var body: some View {
         if showGameScene && countdownFinished {
@@ -59,7 +60,10 @@ struct GameplayView: View {
                             .foregroundColor(.yellow) // Andere Farbe
                         Spacer()
                         Button(action: {
-                            showGameScene = false
+                            self.currentGameState = .contentview
+                            self.countdownFinished = false
+                            self.playerScore = 0
+                            
                         }) {
                             Image(systemName: "power")
                                 .font(.title)

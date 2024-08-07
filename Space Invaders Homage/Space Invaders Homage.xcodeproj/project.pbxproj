@@ -124,8 +124,8 @@
 			children = (
 				D0403CAF2C6220E400B0B725 /* GameScene */,
 				D0403C812C615D6300B0B725 /* Space_Invaders_HomageApp.swift */,
-				D0403C832C615D6300B0B725 /* ContentView.swift */,
 				B59444892C63A1F5006B9F88 /* AppViewModel.swift */,
+				D0403C832C615D6300B0B725 /* ContentView.swift */,
 				B594448B2C63A290006B9F88 /* GameplayView.swift */,
 				B594448D2C63A401006B9F88 /* GameOverView.swift */,
 				B594448F2C63A432006B9F88 /* HighScoreView.swift */,
