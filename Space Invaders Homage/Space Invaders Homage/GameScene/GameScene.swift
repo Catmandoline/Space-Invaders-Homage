@@ -11,9 +11,11 @@ import GameKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     var playerScore : Binding<Int>
+    var playerLives : Binding<Int>
     
-    init(size: CGSize, playerScore: Binding<Int>) {
+    init(size: CGSize, playerScore: Binding<Int>, playerLives: Binding<Int>) {
         self.playerScore = playerScore
+        self.playerLives = playerLives
         super.init(size: size)
         
     }
@@ -106,10 +108,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             shipFireHitEnemy(fires: contactA.node as! SKSpriteNode, enemies: contactB.node as! Mob)
         }
         if contactA.categoryBitMask == GameBitmask.player && contactB.categoryBitMask == GameBitmask.enemy {
-            enemy.removeFromParent()
-            player.removeFromParent()
-            fireTimer.invalidate()
-        }
+                    enemy.removeFromParent()
+                    playerLives.wrappedValue -= 1 // Reduce player lives when the player is hit
+                    if playerLives.wrappedValue <= 0 {
+                        player.removeFromParent()
+                        fireTimer.invalidate()
+                        // Add any additional game over logic here
+                    }
+                }
     }
     
     func shipFireHitEnemy(fires: SKSpriteNode, enemies: Mob) {

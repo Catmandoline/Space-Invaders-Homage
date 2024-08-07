@@ -9,7 +9,15 @@ import SwiftUI
 import SpriteKit
 import GameKit
 
+enum GameState {
+    case contentview
+    case gameplay
+    case gameover
+    case highscore
+}
+
 struct ContentView: View {
+    @State private var currentGameState: GameState = .contentview
     @State private var showGameScene = false
     @State private var showCountdown = false
     @State private var countdownFinished = false
@@ -19,95 +27,49 @@ struct ContentView: View {
     @State public var playerScore = 0
     
     var body: some View {
-        ZStack {
-            if !showGameScene {
+            ZStack {
                 Image("background-contenview")
                     .resizable()
                     .scaledToFill()
                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                     .clipped()
                     .edgesIgnoringSafeArea(.all)
-                
-                VStack {
-                    Spacer()
-                    
-                    Button("Spiel Starten") {
-                        showCountdown = true
-                    }
-                    .padding()
-                    .background(Color.brown)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-                    .shadow(radius: 10)
-                    .position(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height - 150)
+
+                if showCountdown {
+                    CountdownOverlay(countdownFinished: $countdownFinished, showCountDown: $showCountdown, showGameScene: $showGameScene)
                 }
+
+                switch currentGameState {
+                case .contentview:
+                    VStack {
+                        Spacer()
+
+                        Button("Spiel Starten") {
+                            showCountdown = true
+                        }
+                        .padding()
+                        .background(Color.brown)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                        .shadow(radius: 10)
+                        .position(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height - 150)
+                    }
+                
+            case .gameplay:
+                if countdownFinished {
+                    GameplayView(showGameScene: $showGameScene, countdownFinished: $countdownFinished, playerScore: $playerScore, playerLives: $playerLives)
+                }
+                
+            case .gameover:
+                GameOverView()
+                
+            case .highscore:
+                HighScoreView()
             }
-            
-            if showCountdown {
-                            CountdownOverlay(countdownFinished: $countdownFinished, showCountDown: $showCountdown, showGameScene: $showGameScene)
-                        }
-            
-            if showGameScene && countdownFinished {
-                SpriteView(scene: GameScene(size: CGSize(width: 400, height: 800), playerScore: $playerScore))
-                    .ignoresSafeArea()
-                
-                VStack {
-                    VStack{
-                        HStack {
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 10)
-                                    .frame(maxWidth: 120, maxHeight: 30)
-                                    .foregroundColor(.brown)
-                                    .opacity(0.8)
-                                Text("HighScore: \(playersMaxScore)")
-                                    .foregroundColor(.white)
-                            }
-                            Spacer()
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 10)
-                                    .frame(maxWidth: 120, maxHeight: 30)
-                                    .foregroundColor(.brown)
-                                    .opacity(0.8)
-                                Text("Lives: \(playerLives)")
-                                    .foregroundColor(.white)
-                            }
-                        }
-                        .padding(.top, 14)
-                        
-                        HStack {
-                            // Unsichtbarer Platzhalter
-                            Button(action: {}) {
-                                Image(systemName: "pause")
-                                    .font(.title)
-                                    .padding()
-                                    .background(Color.clear)
-                                    .clipShape(Circle())
-                                    .foregroundColor(.clear)
-                                    .shadow(radius: 10)
-                            }
-                            Spacer()
-                            Text("\(playerScore)")
-                                .font(.system(size: 24)) // Größere Schriftgröße
-                                .foregroundColor(.yellow) // Andere Farbe
-                            Spacer()
-                            Button(action: {
-                                showGameScene = false
-                            }) {
-                                Image(systemName: "power")
-                                    .font(.title)
-                                    .padding()
-                                    .background(Color.clear)
-                                    .clipShape(Circle())
-                                    .foregroundColor(.brown)
-                                    .shadow(radius: 10)
-                            }
-                        }
-                        .padding(.leading, 8)
-                        .padding(.top, -8)
-                    }
-                    .edgesIgnoringSafeArea(.top)
-                    Spacer()
-                }
+        }
+        .onChange(of: countdownFinished) {
+            if countdownFinished {
+                currentGameState = .gameplay
             }
         }
     }
@@ -142,6 +104,7 @@ struct CountdownOverlay: View {
                         }
                     }
             }
+            .edgesIgnoringSafeArea(.all) // Ignoriere Safe Area, um das Overlay auf den gesamten Bildschirm auszudehnen
         }
     }
 }
