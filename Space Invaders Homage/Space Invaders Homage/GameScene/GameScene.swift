@@ -30,6 +30,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var xAxisForEnemyRows: Double = 25
     var testCOunt: Int = 0
     var fireTimer = Timer()
+    let hitSound = SKAction.playSoundFileNamed("enemyHit", waitForCompletion: false)
     
     struct GameBitmask {
         static let player: UInt32 = 0b1     //1
@@ -120,6 +121,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             explo?.zPosition = 5
             
             addChild(explo!)
+        
+            run(hitSound)
 
             playerScore.wrappedValue += 1 // Increase the score when an enemy is hit
         }
