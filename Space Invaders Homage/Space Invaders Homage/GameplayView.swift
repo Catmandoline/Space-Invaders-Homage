@@ -24,7 +24,7 @@ struct GameplayView: View {
                                 .frame(maxWidth: 120, maxHeight: 30)
                                 .foregroundColor(.brown)
                                 .opacity(0.8)
-                            Text("HighScore: \(viewModel.playerScore)") // Verwende viewModel.playerScore
+                            Text("HighScore: \(viewModel.highestScore())") 
                                 .foregroundColor(.white)
                         }
                         Spacer()
@@ -79,5 +79,3 @@ struct GameplayView: View {
         }
     }
 }
-
-

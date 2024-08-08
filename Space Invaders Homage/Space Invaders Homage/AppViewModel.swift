@@ -45,6 +45,11 @@ class AppViewModel: ObservableObject {
         }
     }
     
+    func highestScore() -> Int{
+        let score = scores.sorted { $0.score > $1.score }.first
+        return Int(score?.score ?? 0)
+    }
+    
     func addNewScore(name: String, score: Int){
         let newScore = Score(context: dataController.container.viewContext)
         newScore.id = UUID()
