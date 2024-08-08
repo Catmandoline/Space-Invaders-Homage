@@ -44,7 +44,18 @@ struct GameOverView: View {
                 .padding()
                 
             }
-            
+            Button(action: {
+                            viewModel.showTitleScreen()
+                            viewModel.resetGame()
+                        }) {
+                            Text("Back to menu")
+                                .padding()
+                                .background(Color.brown)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                                .shadow(radius: 10)
+                        }
+                        .padding()
             
             Spacer()
         }
