@@ -35,7 +35,8 @@ class Mob: SKSpriteNode {
     }
     
     @objc func fire() {
-        mobFire = SKSpriteNode(imageNamed: "projectile")
+        mobFire = SKSpriteNode(imageNamed: "enemy-projectile")
+        mobFire?.setScale(0.2)
         mobFire?.position = self.position
         mobFire?.zPosition = 5
         mobFire?.physicsBody = SKPhysicsBody(rectangleOf: mobFire!.size)

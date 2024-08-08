@@ -21,7 +21,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var playerScore : Binding<Int>
     var playerLives : Binding<Int>
     
-    @ObservedObject var viewModel: AppViewModel
+    var viewModel: AppViewModel
     
     init(size: CGSize, playerScore: Binding<Int>, playerLives: Binding<Int>, viewModel: AppViewModel) {
         self.playerScore = playerScore
@@ -229,7 +229,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let moveRight = SKAction.move(by: CGVector(dx: 40, dy: 0), duration: 6)
         let moveDown = SKAction.move(by: CGVector(dx: 0, dy: -20), duration: 4)
         let moveLeft = SKAction.move(by: CGVector(dx: -40, dy: 0), duration: 6)
-        let combinedMovement = SKAction.sequence([moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown,moveRight,moveDown,moveLeft,moveDown])
+        let sequence = Array(repeating: [moveRight,moveDown,moveLeft,moveDown], count: 18).flatMap { $0 }
+        let combinedMovement = SKAction.sequence(sequence)
         
         enemy.run(combinedMovement)
     }

@@ -9,7 +9,7 @@ import SwiftUI
 import SpriteKit
 
 struct GameplayView: View {
-    @ObservedObject var viewModel: AppViewModel
+    @Binding var viewModel: AppViewModel
 
     var body: some View {
         if viewModel.showGameScene && viewModel.countdownFinished {

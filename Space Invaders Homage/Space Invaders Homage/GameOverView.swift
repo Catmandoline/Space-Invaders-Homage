@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GameOverView: View {
-    @ObservedObject var viewModel: AppViewModel
+    @Binding var viewModel: AppViewModel
     @State private var username: String = ""
 
     var body: some View {
@@ -67,6 +67,6 @@ struct GameOverView: View {
 
 
 #Preview {
-    GameOverView(viewModel: AppViewModel())
+    GameOverView(viewModel: .constant(AppViewModel()))
 }
 

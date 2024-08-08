@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct HighScoreView: View {
-    @ObservedObject var viewModel: AppViewModel
+    var viewModel: AppViewModel
     @State private var username: String = ""
 
     var body: some View {

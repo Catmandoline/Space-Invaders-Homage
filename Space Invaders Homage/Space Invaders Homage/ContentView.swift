@@ -11,7 +11,7 @@ import GameKit
 
 
 struct ContentView: View {
-    @StateObject var viewModel = AppViewModel() // Erstelle eine Instanz von AppViewModel
+    @State var viewModel = AppViewModel() // Erstelle eine Instanz von AppViewModel
 
     var body: some View {
         ZStack {
@@ -56,11 +56,11 @@ struct ContentView: View {
 
             case .gameplay:
                 if viewModel.countdownFinished {
-                    GameplayView(viewModel: viewModel) // Gib die Instanz von AppViewModel an GameplayView weiter
+                    GameplayView(viewModel: $viewModel) // Gib die Instanz von AppViewModel an GameplayView weiter
                 }
 
             case .gameover:
-                GameOverView(viewModel: viewModel)
+                GameOverView(viewModel: $viewModel)
 
             case .highscore:
                 HighScoreView(viewModel: viewModel)

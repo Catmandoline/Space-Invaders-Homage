@@ -16,18 +16,18 @@ enum GameState {
     case highscore
 }
 
-class AppViewModel: ObservableObject {
+@Observable class AppViewModel {
     private var dataController = DataController(name: "Model")
-    @Published var playerScore: Int = 0
-    @Published var playerLives: Int = 3
-    @Published var currentGameState: GameState = .contentview
-    @Published var currentLevel: Int = 1
-    @Published var remainingTime: TimeInterval = 60.0
-    @Published var countdownValue: Int = 3
-    @Published var countdownFinished: Bool = false
-    @Published var showCountdown : Bool = false
-    @Published var showGameScene : Bool = false
-    @Published var scores: [Score] = []
+    var playerScore: Int = 0
+    var playerLives: Int = 3
+    var currentGameState: GameState = .contentview
+    var currentLevel: Int = 1
+    var remainingTime: TimeInterval = 60.0
+    var countdownValue: Int = 3
+    var countdownFinished: Bool = false
+    var showCountdown : Bool = false
+    var showGameScene : Bool = false
+    var scores: [Score] = []
     
     init() {
         fetchData()
