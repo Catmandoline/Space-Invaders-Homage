@@ -71,44 +71,44 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         makePlayer()
         fireTimer = .scheduledTimer(timeInterval: 0.7, target: self, selector: #selector(shipFireFunction), userInfo: nil, repeats: true)
         repeat {
-            makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 680, image: "steamPunk-mob1", hitPoints: 3, scoreValue: 30)
+            makeEnemy(xAxis: xAxisForEnemyRows, yAxis: 680, image: "steamPunk-mob1", hitPoints: 3, scoreValue: 30)
             enemyCount[0] += 1
             xAxisForEnemyRows += 35
         } while enemyCount[0] < 10
         xAxisForEnemyRows = 25
         repeat {
-            makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 630, image: "steamPunk-mob2", hitPoints: 2, scoreValue: 20)
+            makeEnemy(xAxis: xAxisForEnemyRows, yAxis: 630, image: "steamPunk-mob2", hitPoints: 2, scoreValue: 20)
             enemyCount[1] += 1
             xAxisForEnemyRows += 35
         } while enemyCount[1] < 10
         xAxisForEnemyRows = 25
         repeat {
-            makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 580, image: "steamPunk-mob2", hitPoints: 2, scoreValue: 20)
+            makeEnemy(xAxis: xAxisForEnemyRows, yAxis: 580, image: "steamPunk-mob2", hitPoints: 2, scoreValue: 20)
             enemyCount[2] += 1
             xAxisForEnemyRows += 35
         } while enemyCount[2] < 10
         xAxisForEnemyRows = 25
         repeat {
-            makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 530, image: "steamPunk-mob3", hitPoints: 1, scoreValue: 10)
+            makeEnemy(xAxis: xAxisForEnemyRows, yAxis: 530, image: "steamPunk-mob3", hitPoints: 1, scoreValue: 10)
             enemyCount[3] += 1
             xAxisForEnemyRows += 35
         } while enemyCount[3] < 10
         xAxisForEnemyRows = 25
         repeat {
-            makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 480, image: "steamPunk-mob3", hitPoints: 1, scoreValue: 10)
+            makeEnemy(xAxis: xAxisForEnemyRows, yAxis: 480, image: "steamPunk-mob3", hitPoints: 1, scoreValue: 10)
             enemyCount[4] += 1
             xAxisForEnemyRows += 35
         } while enemyCount[4] < 10
         xAxisForEnemyRows = 25
         repeat {
-            makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 430, image: "steamPunk-mob3", hitPoints: 1, scoreValue: 10)
+            makeEnemy(xAxis: xAxisForEnemyRows, yAxis: 430, image: "steamPunk-mob3", hitPoints: 1, scoreValue: 10)
             enemyCount[5] += 1
             xAxisForEnemyRows += 35
         } while enemyCount[5] < 10
         for enemy in enemyCount {
             enemySum += enemy
         }
-        mobFireTimer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true) { [weak self] _ in
+        mobFireTimer = Timer.scheduledTimer(withTimeInterval: 2.5, repeats: true) { [weak self] _ in
                 self?.randomLivingMob()?.fire()
             }
     }
@@ -137,6 +137,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 viewModel.showGameoverView()
             }
         } else if contactA.categoryBitMask == GameBitmask.player && contactB.categoryBitMask == GameBitmask.enemyFire {
+            
+            player.run(SKAction.repeat(SKAction.sequence([SKAction.fadeOut(withDuration: 0.1), SKAction.fadeIn(withDuration: 0.1)]), count: 7))
+            
+            let explosionAnimation = SKSpriteNode(fileNamed: "Explosion")
+            explosionAnimation?.position = player.position
+            explosionAnimation?.zPosition = 5
+            
+            addChild(explosionAnimation!)
             // Hier kannst du hinzufügen, was passiert, wenn das Feuer der Mobs den Spieler trifft
             playerLives.wrappedValue -= 1 // Reduce player lives when the player is hit by enemy fire
             if playerLives.wrappedValue <= 0 {
@@ -168,11 +176,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             playerScore.wrappedValue += enemies.scoreValue
         }
         
-        let explo = SKSpriteNode(fileNamed: "Explosion")
-        explo?.position = enemies.position
-        explo?.zPosition = 5
+        let explosionAnimation = SKSpriteNode(fileNamed: "Explosion")
+        explosionAnimation?.position = enemies.position
+        explosionAnimation?.zPosition = 5
         
-        addChild(explo!)
+        addChild(explosionAnimation!)
         
         run(hitSound)
         
@@ -213,7 +221,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         shipFire.run(combine)
     }
     
-    @objc func makeEnemieRow(xAxis: Double, yAxis: Double, image: String, hitPoints: Int, scoreValue: Int) {
+    @objc func makeEnemy(xAxis: Double, yAxis: Double, image: String, hitPoints: Int, scoreValue: Int) {
         let enemy = Mob(imageNamed: image, hitPoints: hitPoints, scoreValue: scoreValue)
         enemy.position = CGPoint(x: xAxis, y: yAxis)
         enemy.zPosition = 5
@@ -229,8 +237,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let moveRight = SKAction.move(by: CGVector(dx: 40, dy: 0), duration: 6)
         let moveDown = SKAction.move(by: CGVector(dx: 0, dy: -20), duration: 4)
         let moveLeft = SKAction.move(by: CGVector(dx: -40, dy: 0), duration: 6)
-        let sequence = Array(repeating: [moveRight,moveDown,moveLeft,moveDown], count: 18).flatMap { $0 }
-        let combinedMovement = SKAction.sequence(sequence)
+        let combinedMovement = SKAction.repeat(SKAction.sequence([moveRight,moveDown,moveLeft,moveDown]), count: 18)
         
         enemy.run(combinedMovement)
     }
