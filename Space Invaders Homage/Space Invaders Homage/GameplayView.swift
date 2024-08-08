@@ -13,7 +13,7 @@ struct GameplayView: View {
 
     var body: some View {
         if viewModel.showGameScene && viewModel.countdownFinished {
-            SpriteView(scene: GameScene(size: CGSize(width: 400, height: 800),playerScore: $viewModel.playerScore, playerLives: $viewModel.playerLives))
+            SpriteView(scene: GameScene(size: CGSize(width: 400, height: 800),playerScore: $viewModel.playerScore, playerLives: $viewModel.playerLives, viewModel: viewModel))
                         .ignoresSafeArea()
             
             VStack {

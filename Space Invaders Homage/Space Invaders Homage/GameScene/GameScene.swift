@@ -21,10 +21,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var playerScore : Binding<Int>
     var playerLives : Binding<Int>
     
-    init(size: CGSize, playerScore: Binding<Int>, playerLives: Binding<Int>) {
+    @ObservedObject var viewModel: AppViewModel
+    
+    init(size: CGSize, playerScore: Binding<Int>, playerLives: Binding<Int>, viewModel: AppViewModel) {
         self.playerScore = playerScore
         self.playerLives = playerLives
+        self.viewModel = viewModel
         super.init(size: size)
+
+
         
     }
     required init?(coder aDecoder: NSCoder) {
@@ -36,12 +41,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var player = SKSpriteNode(imageNamed: "playerShip")
     var shipFire = SKSpriteNode()
     var enemy = SKSpriteNode()
-    var enemyCountInRow: Int = 0
+    var enemyCount: [Int] = [0,0,0,0,0,0]
     var xAxisForEnemyRows: Double = 25
-    var testCOunt: Int = 0
     var fireTimer = Timer()
     var mobFireTimer: Timer?
     let hitSound = SKAction.playSoundFileNamed("enemyHit", waitForCompletion: false)
+    var enemySum = 0
+    var backgroundMusic: SKAudioNode?
     
     
     
@@ -53,49 +59,55 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         background.size = self.size
         background.zPosition = 1
         addChild(background)
+        
+        if let musicURL = Bundle.main.url(forResource: "backgroundMusic", withExtension: "mp3") {
+                    backgroundMusic = SKAudioNode(url: musicURL)
+                    if let backgroundMusic = backgroundMusic {
+                        backgroundMusic.run(SKAction.changeVolume(to: 0.4, duration: 0))
+                        addChild(backgroundMusic)
+                    }
+                }
+        
         makePlayer()
         fireTimer = .scheduledTimer(timeInterval: 0.7, target: self, selector: #selector(shipFireFunction), userInfo: nil, repeats: true)
         repeat {
             makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 680, image: "steamPunk-mob1", hitPoints: 3, scoreValue: 30)
-            enemyCountInRow += 1
+            enemyCount[0] += 1
             xAxisForEnemyRows += 35
-        } while enemyCountInRow < 10
-        enemyCountInRow = 0
+        } while enemyCount[0] < 10
         xAxisForEnemyRows = 25
         repeat {
             makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 630, image: "steamPunk-mob2", hitPoints: 2, scoreValue: 20)
-            enemyCountInRow += 1
+            enemyCount[1] += 1
             xAxisForEnemyRows += 35
-        } while enemyCountInRow < 10
-        enemyCountInRow = 0
+        } while enemyCount[1] < 10
         xAxisForEnemyRows = 25
         repeat {
             makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 580, image: "steamPunk-mob2", hitPoints: 2, scoreValue: 20)
-            enemyCountInRow += 1
+            enemyCount[2] += 1
             xAxisForEnemyRows += 35
-        } while enemyCountInRow < 10
-        enemyCountInRow = 0
+        } while enemyCount[2] < 10
         xAxisForEnemyRows = 25
         repeat {
             makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 530, image: "steamPunk-mob3", hitPoints: 1, scoreValue: 10)
-            enemyCountInRow += 1
+            enemyCount[3] += 1
             xAxisForEnemyRows += 35
-        } while enemyCountInRow < 10
-        enemyCountInRow = 0
+        } while enemyCount[3] < 10
         xAxisForEnemyRows = 25
         repeat {
             makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 480, image: "steamPunk-mob3", hitPoints: 1, scoreValue: 10)
-            enemyCountInRow += 1
+            enemyCount[4] += 1
             xAxisForEnemyRows += 35
-        } while enemyCountInRow < 10
-        enemyCountInRow = 0
+        } while enemyCount[4] < 10
         xAxisForEnemyRows = 25
         repeat {
             makeEnemieRow(xAxis: xAxisForEnemyRows, yAxis: 430, image: "steamPunk-mob3", hitPoints: 1, scoreValue: 10)
-            enemyCountInRow += 1
+            enemyCount[5] += 1
             xAxisForEnemyRows += 35
-        } while enemyCountInRow < 10
-        
+        } while enemyCount[5] < 10
+        for enemy in enemyCount {
+            enemySum += enemy
+        }
         mobFireTimer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true) { [weak self] _ in
                 self?.randomLivingMob()?.fire()
             }
@@ -121,7 +133,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if playerLives.wrappedValue <= 0 {
                 player.removeFromParent()
                 fireTimer.invalidate()
-                // Add any additional game over logic here
+                stopBackgroundMusic()
+                viewModel.showGameoverView()
             }
         } else if contactA.categoryBitMask == GameBitmask.player && contactB.categoryBitMask == GameBitmask.enemyFire {
             // Hier kannst du hinzufügen, was passiert, wenn das Feuer der Mobs den Spieler trifft
@@ -129,7 +142,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if playerLives.wrappedValue <= 0 {
                 player.removeFromParent()
                 fireTimer.invalidate()
-                // Add any additional game over logic here
+                stopBackgroundMusic()
+                viewModel.showGameoverView()
             }
         }
     }
@@ -141,7 +155,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func shipFireHitEnemy(fires: SKSpriteNode, enemies: Mob) {
         fires.removeFromParent()
-        enemies.hit()
+        if enemies.hit(){
+            enemySum -= 1
+        }
+        
+        if enemySum == 0 {
+            stopBackgroundMusic()
+            viewModel.showHighscoreView()
+        }
         
         if enemies.parent == nil {
             playerScore.wrappedValue += enemies.scoreValue
@@ -158,7 +179,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     
-    func makePlayer() {
+        func makePlayer() {
         
         player.position = CGPoint(x: size.width / 2, y: 70)
         player.setScale(0.5)
@@ -220,6 +241,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             player.position.x = location.x
         }
     }
+    
+    func stopBackgroundMusic() {
+            backgroundMusic?.removeFromParent()
+        }
     
 }
 

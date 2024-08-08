@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import SwiftUI
+import CoreData
 
 enum GameState {
     case contentview
@@ -15,6 +17,7 @@ enum GameState {
 }
 
 class AppViewModel: ObservableObject {
+    private var dataController = DataController(name: "Model")
     @Published var playerScore: Int = 0
     @Published var playerLives: Int = 3
     @Published var currentGameState: GameState = .contentview
@@ -24,7 +27,38 @@ class AppViewModel: ObservableObject {
     @Published var countdownFinished: Bool = false
     @Published var showCountdown : Bool = false
     @Published var showGameScene : Bool = false
+    @Published var scores: [Score] = []
+    
+    init() {
+        fetchData()
+    }
 
+    func fetchData() {
+        let request = NSFetchRequest<Score>(entityName: "Score")
+        let sortDescriptor = NSSortDescriptor(key: "score", ascending: false)
+                request.sortDescriptors = [sortDescriptor]
+        
+        do{
+            scores = try dataController.container.viewContext.fetch(request)
+        } catch {
+            print("Error CoreData")
+        }
+    }
+    
+    func addNewScore(name: String, score: Int){
+        let newScore = Score(context: dataController.container.viewContext)
+        newScore.id = UUID()
+        newScore.username = name
+        newScore.score = Int64(score)
+        
+        save()
+        fetchData()
+    }
+    
+    func save() {
+        try? dataController.container.viewContext.save()
+    }
+    
     // Funktionen zum Aktualisieren des Zustands...
     func increaseScore(by points: Int) {
         playerScore += points
@@ -44,6 +78,7 @@ class AppViewModel: ObservableObject {
         currentLevel = 1
         remainingTime = 60.0
         countdownValue = 3
+        countdownFinished = false
         currentGameState = .contentview // Set the game state back to contentview
     }
 
@@ -56,5 +91,17 @@ class AppViewModel: ObservableObject {
                 self.currentGameState = .gameplay
             }
         }
+    }
+    
+    func showHighscoreView(){
+        self.currentGameState = .highscore
+    }
+    
+    func showTitleScreen(){
+        self.currentGameState = .contentview
+    }
+    
+    func showGameoverView(){
+        self.currentGameState = .gameover
     }
 }

@@ -25,11 +25,13 @@ class Mob: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func hit() {
+    func hit() -> Bool { // Returns true on kill
         hitPoints -= 1
         if hitPoints <= 0 {
             removeFromParent()
+            return true
         }
+        return false
     }
     
     @objc func fire() {

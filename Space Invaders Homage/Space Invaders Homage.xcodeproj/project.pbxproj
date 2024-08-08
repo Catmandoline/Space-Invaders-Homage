@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50031AE42C64276000C8BEDF /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 50031AE22C64276000C8BEDF /* Model.xcdatamodeld */; };
+		50031AE62C6427CB00C8BEDF /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50031AE52C6427CB00C8BEDF /* DataController.swift */; };
+		50031AE82C64421E00C8BEDF /* backgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 50031AE72C64421E00C8BEDF /* backgroundMusic.mp3 */; };
+		50031AE92C64421E00C8BEDF /* backgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 50031AE72C64421E00C8BEDF /* backgroundMusic.mp3 */; };
+		50031AEA2C64421E00C8BEDF /* backgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 50031AE72C64421E00C8BEDF /* backgroundMusic.mp3 */; };
 		503A93162C637C59001FEA38 /* enemyHit.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 503A93152C637C59001FEA38 /* enemyHit.mp3 */; };
 		503A93172C637C59001FEA38 /* enemyHit.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 503A93152C637C59001FEA38 /* enemyHit.mp3 */; };
 		503A93182C637C59001FEA38 /* enemyHit.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 503A93152C637C59001FEA38 /* enemyHit.mp3 */; };
@@ -45,6 +50,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		50031AE32C64276000C8BEDF /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		50031AE52C6427CB00C8BEDF /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		50031AE72C64421E00C8BEDF /* backgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundMusic.mp3; sourceTree = "<group>"; };
 		503A93152C637C59001FEA38 /* enemyHit.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = enemyHit.mp3; sourceTree = "<group>"; };
 		A01DC6802C62DD6200B17CD5 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
 		A01DC6812C62DD6200B17CD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -94,6 +102,7 @@
 		503A93142C637C44001FEA38 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				50031AE72C64421E00C8BEDF /* backgroundMusic.mp3 */,
 				503A93152C637C59001FEA38 /* enemyHit.mp3 */,
 			);
 			path = Sounds;
@@ -131,6 +140,7 @@
 				B594448F2C63A432006B9F88 /* HighScoreView.swift */,
 				D0403C852C615D6500B0B725 /* Assets.xcassets */,
 				D0403C872C615D6500B0B725 /* Preview Content */,
+				50031AE22C64276000C8BEDF /* Model.xcdatamodeld */,
 			);
 			path = "Space Invaders Homage";
 			sourceTree = "<group>";
@@ -168,6 +178,7 @@
 				A01DC6802C62DD6200B17CD5 /* Explosion.sks */,
 				A01DC6812C62DD6200B17CD5 /* Assets.xcassets */,
 				503A93142C637C44001FEA38 /* Sounds */,
+				50031AE52C6427CB00C8BEDF /* DataController.swift */,
 			);
 			path = GameScene;
 			sourceTree = "<group>";
@@ -279,6 +290,7 @@
 				D0403C892C615D6500B0B725 /* Preview Assets.xcassets in Resources */,
 				D0403C862C615D6500B0B725 /* Assets.xcassets in Resources */,
 				503A93162C637C59001FEA38 /* enemyHit.mp3 in Resources */,
+				50031AE82C64421E00C8BEDF /* backgroundMusic.mp3 in Resources */,
 				A01DC6822C62DD6200B17CD5 /* Explosion.sks in Resources */,
 				A01DC6832C62DD6200B17CD5 /* Assets.xcassets in Resources */,
 			);
@@ -289,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				503A93172C637C59001FEA38 /* enemyHit.mp3 in Resources */,
+				50031AE92C64421E00C8BEDF /* backgroundMusic.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				503A93182C637C59001FEA38 /* enemyHit.mp3 in Resources */,
+				50031AEA2C64421E00C8BEDF /* backgroundMusic.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +326,8 @@
 				B594448A2C63A1F5006B9F88 /* AppViewModel.swift in Sources */,
 				D0403CB12C6220F200B0B725 /* GameScene.swift in Sources */,
 				D0403C842C615D6300B0B725 /* ContentView.swift in Sources */,
+				50031AE62C6427CB00C8BEDF /* DataController.swift in Sources */,
+				50031AE42C64276000C8BEDF /* Model.xcdatamodeld in Sources */,
 				B59444902C63A432006B9F88 /* HighScoreView.swift in Sources */,
 				B59444882C63823F006B9F88 /* Mob.swift in Sources */,
 				D0403C822C615D6300B0B725 /* Space_Invaders_HomageApp.swift in Sources */,
@@ -652,6 +668,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		50031AE22C64276000C8BEDF /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				50031AE32C64276000C8BEDF /* Model.xcdatamodel */,
+			);
+			currentVersion = 50031AE32C64276000C8BEDF /* Model.xcdatamodel */;
+			name = Model.xcdatamodeld;
+			path = "/Users/mircolange/XCode/Space-Invaders-Homage/Space Invaders Homage/Space Invaders Homage/Model.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D0403C762C615D6300B0B725 /* Project object */;
 }

@@ -29,8 +29,20 @@ struct ContentView: View {
             switch viewModel.currentGameState {
             case .contentview:
                 VStack {
+                    List(viewModel.scores) { score in
+                        HStack {
+                            Text(score.username ?? "Unknown")
+                                .font(.headline)
+                            Spacer()
+                            Text("\(score.score)")
+                                .font(.headline)
+                        }
+                    }
+                    .padding()
+                    .scrollContentBackground(.hidden)
+                    
+                        
                     Spacer()
-
                     Button("Spiel Starten") {
                         viewModel.showCountdown = true
                     }
@@ -39,7 +51,7 @@ struct ContentView: View {
                     .foregroundColor(.white)
                     .cornerRadius(10)
                     .shadow(radius: 10)
-                    .position(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height - 150)
+                    .padding(.bottom, 75)
                 }
 
             case .gameplay:
@@ -48,10 +60,10 @@ struct ContentView: View {
                 }
 
             case .gameover:
-                GameOverView()
+                GameOverView(viewModel: viewModel)
 
             case .highscore:
-                HighScoreView()
+                HighScoreView(viewModel: viewModel)
             }
         }
         .onChange(of: viewModel.countdownFinished) {
