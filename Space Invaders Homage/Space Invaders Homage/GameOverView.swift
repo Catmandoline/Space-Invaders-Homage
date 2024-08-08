@@ -31,6 +31,8 @@ struct GameOverView: View {
                 
                 Button(action: {
                     viewModel.addNewScore(name: username, score: viewModel.playerScore)
+                    viewModel.showTitleScreen()
+                    viewModel.resetGame()
                 }) {
                     Text("Save")
                         .padding()
@@ -43,22 +45,6 @@ struct GameOverView: View {
                 
             }
             
-            
-            
-            
-            
-            Button(action: {
-                viewModel.showTitleScreen()
-                viewModel.resetGame()
-            }) {
-                Text("Back to menu")
-                    .padding()
-                    .background(Color.brown)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-                    .shadow(radius: 10)
-            }
-            .padding()
             
             Spacer()
         }
