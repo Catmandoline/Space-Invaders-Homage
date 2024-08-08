@@ -57,4 +57,27 @@ class Mob: SKSpriteNode {
         }
     }
     
+    @objc func fire2() {
+        mobFire = SKSpriteNode(imageNamed: "enemy-projectile2")
+        mobFire?.setScale(0.5)
+        mobFire?.position = self.position
+        mobFire?.zPosition = 5
+        mobFire?.physicsBody = SKPhysicsBody(rectangleOf: mobFire!.size)
+        mobFire?.physicsBody?.affectedByGravity = false
+        mobFire?.physicsBody?.categoryBitMask = GameBitmask.enemyFire
+        mobFire?.physicsBody?.contactTestBitMask = GameBitmask.player
+        mobFire?.physicsBody?.collisionBitMask = GameBitmask.player
+        
+        
+        let moveAction = SKAction.moveTo(y: -800, duration: 6)
+        let deleteAction = SKAction.removeFromParent()
+        let actionSequence = SKAction.sequence([moveAction, deleteAction])
+        
+        mobFire?.run(actionSequence)
+        
+        if let fire = mobFire {
+            self.parent?.addChild(fire)
+        }
+    }
+    
 }

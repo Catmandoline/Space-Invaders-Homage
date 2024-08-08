@@ -46,6 +46,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var fireTimer = Timer()
     var mobFireTimer: Timer?
     var mobFireTimer2: Timer?
+    var mobFireTimer3: Timer?
     let hitSound = SKAction.playSoundFileNamed("enemyHit", waitForCompletion: false)
     var enemySum = 0
     var backgroundMusic: SKAudioNode?
@@ -115,6 +116,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         mobFireTimer2 = Timer.scheduledTimer(withTimeInterval: 9.0, repeats: true) { [weak self] _ in
                 self?.randomLivingMob()?.fire()
             }
+        mobFireTimer3 = Timer.scheduledTimer(withTimeInterval: 8.0, repeats: true) { [weak self] _ in
+                self?.randomLivingMob2()?.fire2()
+            }
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -162,6 +166,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func randomLivingMob() -> Mob? {
         let livingMobs = children.compactMap { $0 as? Mob }.filter { $0.hitPoints > 0 }
+        return livingMobs.randomElement()
+    }
+    func randomLivingMob2() -> Mob? {
+        let livingMobs = children.compactMap { $0 as? Mob }.filter { $0.hitPoints > 2 }
         return livingMobs.randomElement()
     }
     
