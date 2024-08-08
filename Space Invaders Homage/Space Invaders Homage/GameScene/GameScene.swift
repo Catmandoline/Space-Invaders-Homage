@@ -45,6 +45,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var xAxisForEnemyRows: Double = 25
     var fireTimer = Timer()
     var mobFireTimer: Timer?
+    var mobFireTimer2: Timer?
     let hitSound = SKAction.playSoundFileNamed("enemyHit", waitForCompletion: false)
     var enemySum = 0
     var backgroundMusic: SKAudioNode?
@@ -109,6 +110,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             enemySum += enemy
         }
         mobFireTimer = Timer.scheduledTimer(withTimeInterval: 2.5, repeats: true) { [weak self] _ in
+                self?.randomLivingMob()?.fire()
+            }
+        mobFireTimer2 = Timer.scheduledTimer(withTimeInterval: 9.0, repeats: true) { [weak self] _ in
                 self?.randomLivingMob()?.fire()
             }
     }
