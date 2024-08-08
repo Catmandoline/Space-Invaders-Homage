@@ -185,7 +185,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if enemies.parent == nil {
-            playerScore.wrappedValue += enemies.scoreValue
+            let score: Int = Int(Double(enemies.scoreValue) * viewModel.highscoreMultiplier)
+            playerScore.wrappedValue += score
         }
         
         let explosionAnimation = SKSpriteNode(fileNamed: "Explosion")
@@ -225,6 +226,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         shipFire.physicsBody?.collisionBitMask = GameBitmask.enemy
         
         addChild(shipFire)
+        
+        viewModel.decreaseMultiplier()
         
         let moveAction = SKAction.moveTo(y: 800, duration: 0.7)
         let deleteAction = SKAction.removeFromParent()

@@ -28,6 +28,7 @@ enum GameState {
     var showCountdown : Bool = false
     var showGameScene : Bool = false
     var scores: [Score] = []
+    var highscoreMultiplier = 20.0
     
     init() {
         fetchData()
@@ -108,5 +109,9 @@ enum GameState {
     
     func showGameoverView(){
         self.currentGameState = .gameover
+    }
+    
+    func decreaseMultiplier() {
+        highscoreMultiplier -= 0.1
     }
 }
