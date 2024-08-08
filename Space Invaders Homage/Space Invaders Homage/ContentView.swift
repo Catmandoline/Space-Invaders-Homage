@@ -66,8 +66,8 @@ struct ContentView: View {
                 HighScoreView(viewModel: viewModel)
             }
         }
-        .onChange(of: viewModel.countdownFinished) {
-            if $0 {
+        .onChange(of: viewModel.countdownFinished) { oldValue, newValue in
+            if newValue {
                 viewModel.currentGameState = .gameplay
             }
         }

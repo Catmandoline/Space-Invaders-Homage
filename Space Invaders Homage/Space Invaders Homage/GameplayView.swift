@@ -10,51 +10,63 @@ import SpriteKit
 
 struct GameplayView: View {
     @Binding var viewModel: AppViewModel
-
+    
     var body: some View {
         if viewModel.showGameScene && viewModel.countdownFinished {
             SpriteView(scene: GameScene(size: CGSize(width: 400, height: 800),playerScore: $viewModel.playerScore, playerLives: $viewModel.playerLives, viewModel: viewModel))
-                        .ignoresSafeArea()
-            
-            VStack {
-                VStack{
-                    HStack {
-                        ZStack{
-                            RoundedRectangle(cornerRadius: 10)
-                                .frame(maxWidth: 120, maxHeight: 30)
-                                .foregroundColor(.brown)
-                                .opacity(0.8)
-                            Text("HighScore: \(viewModel.highestScore())") 
+                .ignoresSafeArea()
+            VStack{
+                VStack {
+                    ZStack {
+                        // Hintergrund-Rechteck
+                        Rectangle()
+                            .foregroundColor(.brown)
+                            .opacity(0.8)
+                            
+                        
+                        
+                        HStack {
+                            // Höchste Punktzahl (links)
+                            Text("\(viewModel.highestScore())")
+                                .font(.title)
+                                .fontWeight(.bold)
                                 .foregroundColor(.white)
-                        }
-                        Spacer()
-                        ZStack{
-                            RoundedRectangle(cornerRadius: 10)
-                                .frame(maxWidth: 120, maxHeight: 30)
-                                .foregroundColor(.brown)
-                                .opacity(0.8)
-                            Text("Lives: \(viewModel.playerLives)") // Verwende viewModel.playerLives
-                                .foregroundColor(.white)
+                                .padding(.leading, 10)
+                            
+                            Spacer() // Zentriert den aktuellen Score
+                            
+                            // Aktueller Score (mittig)
+                            Text("\(viewModel.playerScore)")
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .foregroundColor(.yellow)
+                                .padding(.horizontal, 10)
+                            
+                            Spacer() // Schafft Abstand zum Fliegerbild
+                            
+                            // Verbleibende Leben und Fliegerbild (rechts)
+                            HStack(spacing: 10) {
+                                Text("\(viewModel.playerLives)")
+                                    .font(.title)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.white)
+                                
+                                Image("playerShip")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 30, height: 30)
+                            }
+                            .padding(.trailing, 10)
                         }
                     }
-                    .padding(.top, 14)
+                    .frame(height: 30) // Höhe der Bildschirmleiste
+                    .padding(.top, 50) // Abstand zum oberen Rand
                     
                     HStack {
                         // Unsichtbarer Platzhalter
-                        Button(action: {}) {
-                            Image(systemName: "pause")
-                                .font(.title)
-                                .padding()
-                                .background(Color.clear)
-                                .clipShape(Circle())
-                                .foregroundColor(.clear)
-                                .shadow(radius: 10)
-                        }
+                        
                         Spacer()
-                        Text("\(viewModel.playerScore)")
-                            .font(.system(size: 24))
-                            .foregroundColor(.yellow)
-                        Spacer()
+                        
                         Button(action: {
                             viewModel.currentGameState = .contentview
                             viewModel.countdownFinished = false
