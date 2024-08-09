@@ -48,6 +48,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let hitSound = SKAction.playSoundFileNamed("enemyHit", waitForCompletion: false)
     var enemySum = 0
     var backgroundMusic: SKAudioNode?
+    let damageSound = SKAction.playSoundFileNamed("damageSound", waitForCompletion: false)
     
     
     
@@ -151,6 +152,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             explosionAnimation?.zPosition = 5
             
             addChild(explosionAnimation!)
+            run(damageSound)
             
             // Hier kannst du hinzufügen, was passiert, wenn das Feuer der Mobs den Spieler trifft
             playerLives.wrappedValue -= 1
