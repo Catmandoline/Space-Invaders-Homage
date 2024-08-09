@@ -10,19 +10,19 @@ import SwiftUI
 struct GameOverView: View {
     @Binding var viewModel: AppViewModel
     @State private var username: String = ""
-
+    
     var body: some View {
         VStack {
             Spacer()
-            Text("Game Over")
-                .foregroundColor(.red)
-                .font(.largeTitle)
+            
+            Text("GAME OVER")
+                .foregroundColor(.yellow)
+                .font(.custom("FabulousSteampunk", size: 46))
                 .bold()
             Text("\(viewModel.playerScore)")
                 .foregroundColor(.white)
                 .font(.title)
                 .padding(20)
-            
             
             HStack {
                 TextField("Enter your username", text: $username)
@@ -42,28 +42,26 @@ struct GameOverView: View {
                         .shadow(radius: 10)
                 }
                 .padding()
-                
             }
+            
             Button(action: {
-                            viewModel.showTitleScreen()
-                            viewModel.resetGame()
-                        }) {
-                            Text("Back to menu")
-                                .padding()
-                                .background(Color.brown)
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
-                                .shadow(radius: 10)
-                        }
-                        .padding()
+                viewModel.showTitleScreen()
+                viewModel.resetGame()
+            }) {
+                Text("Back to menu")
+                    .padding()
+                    .background(Color.brown)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+                    .shadow(radius: 10)
+            }
+            .padding()
             
             Spacer()
         }
     }
 }
 
-
 #Preview {
     GameOverView(viewModel: .constant(AppViewModel()))
 }
-

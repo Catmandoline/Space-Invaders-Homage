@@ -17,31 +17,30 @@ struct GameplayView: View {
             VStack{
                 VStack {
                     ZStack {
-                        // Hintergrund-Rechteck
                         Rectangle()
                             .foregroundColor(.black)
                             .opacity(0.5)
-                            .frame(height: 40)
+                            .frame(height: 44)
                         Rectangle()
                             .foregroundColor(.brown)
                             .opacity(0.8)
-                            .frame(height: 30)
+                            .frame(height: 34)
+                        
                         HStack {
-                            // Höchste Punktzahl (links)
                             Text("\(viewModel.highestScore())")
                                 .font(.title)
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
                                 .padding(.leading, 10)
-                            Spacer() // Zentriert den aktuellen Score
-                            // Aktueller Score (mittig)
+                            Spacer()
+                            
                             Text("\(viewModel.playerScore)")
                                 .font(.title)
                                 .fontWeight(.bold)
                                 .foregroundColor(.yellow)
                                 .padding(.horizontal, 10)
-                            Spacer() // Schafft Abstand zum Fliegerbild
-                            // Verbleibende Leben und Fliegerbild (rechts)
+                            Spacer()
+                            
                             HStack(spacing: 10) {
                                 Text("\(viewModel.playerLives)")
                                     .font(.title)
@@ -50,16 +49,17 @@ struct GameplayView: View {
                                 Image("playerShip")
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: 30, height: 40)
+                                    .frame(width: 28, height: 28)
                             }
                             .padding(.trailing, 10)
                         }
                     }
-                    .frame(height: 40) // Höhe der Bildschirmleiste
-                    .padding(.top, 56) // Abstand zum oberen Rand
+                    .frame(height: 44)
+                    .padding(.top, 56)
+                    
                     HStack {
-                        // Unsichtbarer Platzhalter
                         Spacer()
+                        
                         Button(action: {
                             viewModel.currentGameState = .contentview
                             viewModel.countdownFinished = false

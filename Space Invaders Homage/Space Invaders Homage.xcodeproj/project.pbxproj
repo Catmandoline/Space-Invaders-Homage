@@ -16,8 +16,8 @@
 		503A93182C637C59001FEA38 /* enemyHit.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 503A93152C637C59001FEA38 /* enemyHit.mp3 */; };
 		A01DC6822C62DD6200B17CD5 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = A01DC6802C62DD6200B17CD5 /* Explosion.sks */; };
 		A01DC6832C62DD6200B17CD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A01DC6812C62DD6200B17CD5 /* Assets.xcassets */; };
-		B548BFF22C65FFA10049A91C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B548BFF02C65FFA10049A91C /* Model.xcdatamodeld */; };
 		B548BFF42C66002D0049A91C /* FabulousSteampunk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B548BFF32C66002D0049A91C /* FabulousSteampunk.ttf */; };
+		B548BFFB2C660DFB0049A91C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B548BFF92C660DFB0049A91C /* Model.xcdatamodeld */; };
 		B59444882C63823F006B9F88 /* Mob.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59444872C63823F006B9F88 /* Mob.swift */; };
 		B594448A2C63A1F5006B9F88 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59444892C63A1F5006B9F88 /* AppViewModel.swift */; };
 		B594448C2C63A290006B9F88 /* GameplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594448B2C63A290006B9F88 /* GameplayView.swift */; };
@@ -56,9 +56,9 @@
 		503A93152C637C59001FEA38 /* enemyHit.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = enemyHit.mp3; sourceTree = "<group>"; };
 		A01DC6802C62DD6200B17CD5 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
 		A01DC6812C62DD6200B17CD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B548BFF12C65FFA10049A91C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		B548BFF32C66002D0049A91C /* FabulousSteampunk.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FabulousSteampunk.ttf; sourceTree = "<group>"; };
 		B548BFF52C6600940049A91C /* Space-Invaders-Homage-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Space-Invaders-Homage-Info.plist"; sourceTree = SOURCE_ROOT; };
+		B548BFFA2C660DFB0049A91C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		B59444872C63823F006B9F88 /* Mob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mob.swift; sourceTree = "<group>"; };
 		B59444892C63A1F5006B9F88 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		B594448B2C63A290006B9F88 /* GameplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameplayView.swift; sourceTree = "<group>"; };
@@ -144,7 +144,7 @@
 				B594448F2C63A432006B9F88 /* HighScoreView.swift */,
 				B548BFF32C66002D0049A91C /* FabulousSteampunk.ttf */,
 				D0403C852C615D6500B0B725 /* Assets.xcassets */,
-				B548BFF02C65FFA10049A91C /* Model.xcdatamodeld */,
+				B548BFF92C660DFB0049A91C /* Model.xcdatamodeld */,
 				D0403C872C615D6500B0B725 /* Preview Content */,
 			);
 			path = "Space Invaders Homage";
@@ -334,7 +334,7 @@
 				D0403C842C615D6300B0B725 /* ContentView.swift in Sources */,
 				50031AE62C6427CB00C8BEDF /* DataController.swift in Sources */,
 				B59444902C63A432006B9F88 /* HighScoreView.swift in Sources */,
-				B548BFF22C65FFA10049A91C /* Model.xcdatamodeld in Sources */,
+				B548BFFB2C660DFB0049A91C /* Model.xcdatamodeld in Sources */,
 				B59444882C63823F006B9F88 /* Mob.swift in Sources */,
 				D0403C822C615D6300B0B725 /* Space_Invaders_HomageApp.swift in Sources */,
 			);
@@ -678,12 +678,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		B548BFF02C65FFA10049A91C /* Model.xcdatamodeld */ = {
+		B548BFF92C660DFB0049A91C /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				B548BFF12C65FFA10049A91C /* Model.xcdatamodel */,
+				B548BFFA2C660DFB0049A91C /* Model.xcdatamodel */,
 			);
-			currentVersion = B548BFF12C65FFA10049A91C /* Model.xcdatamodel */;
+			currentVersion = B548BFFA2C660DFB0049A91C /* Model.xcdatamodel */;
 			name = Model.xcdatamodeld;
 			path = "/Users/reneschwarz/Documents/IOS Syntax/Space-Invaders-Homage/Space Invaders Homage/Space Invaders Homage/Model.xcdatamodeld";
 			sourceTree = "<group>";

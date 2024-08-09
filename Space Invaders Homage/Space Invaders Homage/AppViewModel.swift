@@ -39,19 +39,19 @@ enum GameState {
         let sortDescriptor = NSSortDescriptor(key: "score", ascending: false)
                 request.sortDescriptors = [sortDescriptor]
         
-        do{
+        do {
             scores = try dataController.container.viewContext.fetch(request)
         } catch {
             print("Error CoreData")
         }
     }
     
-    func highestScore() -> Int{
+    func highestScore() -> Int {
         let score = scores.sorted { $0.score > $1.score }.first
         return Int(score?.score ?? 0)
     }
     
-    func addNewScore(name: String, score: Int){
+    func addNewScore(name: String, score: Int) {
         let newScore = Score(context: dataController.container.viewContext)
         newScore.id = UUID()
         newScore.username = name
@@ -85,7 +85,7 @@ enum GameState {
         remainingTime = 60.0
         countdownValue = 3
         countdownFinished = false
-        currentGameState = .contentview // Set the game state back to contentview
+        currentGameState = .contentview
     }
 
     func startCountdown() {
@@ -99,15 +99,15 @@ enum GameState {
         }
     }
     
-    func showHighscoreView(){
+    func showHighscoreView() {
         self.currentGameState = .highscore
     }
     
-    func showTitleScreen(){
+    func showTitleScreen() {
         self.currentGameState = .contentview
     }
     
-    func showGameoverView(){
+    func showGameoverView() {
         self.currentGameState = .gameover
     }
     

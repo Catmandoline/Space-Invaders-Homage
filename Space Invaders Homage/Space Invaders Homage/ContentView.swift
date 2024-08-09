@@ -12,6 +12,7 @@ import GameKit
 
 struct ContentView: View {
     @State var viewModel = AppViewModel() // Erstelle eine Instanz von AppViewModel
+    
     var body: some View {
         ZStack {
             Image("background-contenview")
@@ -20,9 +21,7 @@ struct ContentView: View {
                 .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                 .clipped()
                 .edgesIgnoringSafeArea(.all)
-            if viewModel.showCountdown {
-                CountdownOverlay(countdownFinished: $viewModel.countdownFinished, showCountDown: $viewModel.showCountdown, showGameScene: $viewModel.showGameScene)
-            }
+            
             switch viewModel.currentGameState {
             case .contentview:
                 VStack {
@@ -33,7 +32,9 @@ struct ContentView: View {
                         .multilineTextAlignment(.center)
                         .padding(.leading, 10)
                         .padding(.top, 170)
+                    
                     Spacer()
+                    
                     List {
                         Section(header: Text("High Score")
                             .font(.custom("FabulousSteampunk", size: 18))
@@ -56,9 +57,9 @@ struct ContentView: View {
                                     }
                                     .listRowBackground(Color.brown.opacity(0.5))
                                     .overlay(
-                                        RoundedRectangle(cornerRadius: 10) // Abgerundeter Rahmen
-                                            .stroke(Color.white, lineWidth: 1) // Weiße Linie für den Outline
-                                            .shadow(color: .white.opacity(0.3), radius: 5) // Leichter Glow-Effekt
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .stroke(Color.white, lineWidth: 1)
+                                            .shadow(color: .white.opacity(0.3), radius: 5)
                                             .padding(-8)
                                     )
                                 }
@@ -66,10 +67,12 @@ struct ContentView: View {
                     }
                     .listStyle(SidebarListStyle())
                     .scrollContentBackground(.hidden)
-                    .background(Color.clear) // Transparenter Hintergrund für die gesamte Liste
-                    .shadow(color: .black.opacity(0.4), radius: 10, x: 0, y: 10) // Schatten für den Schwebeeffekt
+                    .background(Color.clear)
+                    .shadow(color: .black.opacity(0.04), radius: 10, x: 0, y: 10)
                     .padding(.top,20)
+                    
                     Spacer()
+                    
                     Button("START GAME") {
                         viewModel.showCountdown = true
                     }
@@ -81,14 +84,20 @@ struct ContentView: View {
                     .shadow(radius: 10)
                     .padding(.bottom, 64)
                 }
+                
             case .gameplay:
                 if viewModel.countdownFinished {
                     GameplayView(viewModel: $viewModel) // Gib die Instanz von AppViewModel an GameplayView weiter
                 }
+                
             case .gameover:
                 GameOverView(viewModel: $viewModel)
+                
             case .highscore:
                 HighScoreView(viewModel: viewModel)
+            }
+            if viewModel.showCountdown {
+                CountdownOverlay(countdownFinished: $viewModel.countdownFinished, showCountDown: $viewModel.showCountdown, showGameScene: $viewModel.showGameScene)
             }
         }
         .onChange(of: viewModel.countdownFinished) { oldValue, newValue in
@@ -98,6 +107,7 @@ struct ContentView: View {
         }
     }
 }
+
 struct CountdownOverlay: View {
     @Binding var countdownFinished: Bool
     @Binding var showCountDown: Bool
@@ -125,10 +135,11 @@ struct CountdownOverlay: View {
                         }
                     }
             }
-            .edgesIgnoringSafeArea(.all) // Ignoriere Safe Area, um das Overlay auf den gesamten Bildschirm auszudehnen
+            .edgesIgnoringSafeArea(.all)
         }
     }
 }
+
 #Preview {
     ContentView()
 }

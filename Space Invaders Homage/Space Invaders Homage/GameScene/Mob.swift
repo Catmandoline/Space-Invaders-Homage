@@ -8,7 +8,6 @@
 import SwiftUI
 import SpriteKit
 
-
 class Mob: SKSpriteNode {
     var hitPoints: Int
     var scoreValue: Int
@@ -45,7 +44,6 @@ class Mob: SKSpriteNode {
         mobFire?.physicsBody?.contactTestBitMask = GameBitmask.player
         mobFire?.physicsBody?.collisionBitMask = GameBitmask.player
         
-        
         let moveAction = SKAction.moveTo(y: -800, duration: 2)
         let deleteAction = SKAction.removeFromParent()
         let actionSequence = SKAction.sequence([moveAction, deleteAction])
@@ -68,7 +66,6 @@ class Mob: SKSpriteNode {
         mobFire?.physicsBody?.contactTestBitMask = GameBitmask.player
         mobFire?.physicsBody?.collisionBitMask = GameBitmask.player
         
-        
         let moveAction = SKAction.moveTo(y: -800, duration: 6)
         let deleteAction = SKAction.removeFromParent()
         let actionSequence = SKAction.sequence([moveAction, deleteAction])
@@ -79,5 +76,4 @@ class Mob: SKSpriteNode {
             self.parent?.addChild(fire)
         }
     }
-    
 }

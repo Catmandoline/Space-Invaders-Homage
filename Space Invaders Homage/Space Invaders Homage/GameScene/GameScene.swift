@@ -28,8 +28,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.playerLives = playerLives
         self.viewModel = viewModel
         super.init(size: size)
-
-
+        
+        
         
     }
     required init?(coder aDecoder: NSCoder) {
@@ -45,8 +45,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var xAxisForEnemyRows: Double = 25
     var fireTimer = Timer()
     var mobFireTimer: Timer?
-    var mobFireTimer2: Timer?
-    var mobFireTimer3: Timer?
     let hitSound = SKAction.playSoundFileNamed("enemyHit", waitForCompletion: false)
     var enemySum = 0
     var backgroundMusic: SKAudioNode?
@@ -63,12 +61,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(background)
         
         if let musicURL = Bundle.main.url(forResource: "backgroundMusic", withExtension: "mp3") {
-                    backgroundMusic = SKAudioNode(url: musicURL)
-                    if let backgroundMusic = backgroundMusic {
-                        backgroundMusic.run(SKAction.changeVolume(to: 0.2, duration: 0))
-                        addChild(backgroundMusic)
-                    }
-                }
+            backgroundMusic = SKAudioNode(url: musicURL)
+            if let backgroundMusic = backgroundMusic {
+                backgroundMusic.run(SKAction.changeVolume(to: 0.2, duration: 0))
+                addChild(backgroundMusic)
+            }
+        }
         
         makePlayer()
         fireTimer = .scheduledTimer(timeInterval: 0.7, target: self, selector: #selector(shipFireFunction), userInfo: nil, repeats: true)
@@ -111,14 +109,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             enemySum += enemy
         }
         mobFireTimer = Timer.scheduledTimer(withTimeInterval: 2.5, repeats: true) { [weak self] _ in
-                self?.randomLivingMob()?.fire()
-            }
-        mobFireTimer2 = Timer.scheduledTimer(withTimeInterval: 9.0, repeats: true) { [weak self] _ in
-                self?.randomLivingMob()?.fire()
-            }
-        mobFireTimer3 = Timer.scheduledTimer(withTimeInterval: 8.0, repeats: true) { [weak self] _ in
-                self?.randomLivingMob2()?.fire2()
-            }
+            self?.randomLivingMob()?.fire()
+        }
+        mobFireTimer = Timer.scheduledTimer(withTimeInterval: 9.0, repeats: true) { [weak self] _ in
+            self?.randomLivingMob()?.fire()
+        }
+        mobFireTimer = Timer.scheduledTimer(withTimeInterval: 8.0, repeats: true) { [weak self] _ in
+            self?.randomLivingMob2()?.fire2()
+        }
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -137,7 +135,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             shipFireHitEnemy(fires: contactA.node as! SKSpriteNode, enemies: contactB.node as! Mob)
         } else if contactA.categoryBitMask == GameBitmask.player && contactB.categoryBitMask == GameBitmask.enemy {
             enemy.removeFromParent()
-            playerLives.wrappedValue -= 1 // Reduce player lives when the player is hit
+            playerLives.wrappedValue -= 1
             if playerLives.wrappedValue <= 0 {
                 player.removeFromParent()
                 fireTimer.invalidate()
@@ -153,8 +151,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             explosionAnimation?.zPosition = 5
             
             addChild(explosionAnimation!)
+            
             // Hier kannst du hinzufügen, was passiert, wenn das Feuer der Mobs den Spieler trifft
-            playerLives.wrappedValue -= 1 // Reduce player lives when the player is hit by enemy fire
+            playerLives.wrappedValue -= 1
             if playerLives.wrappedValue <= 0 {
                 player.removeFromParent()
                 fireTimer.invalidate()
@@ -168,6 +167,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let livingMobs = children.compactMap { $0 as? Mob }.filter { $0.hitPoints > 0 }
         return livingMobs.randomElement()
     }
+    
     func randomLivingMob2() -> Mob? {
         let livingMobs = children.compactMap { $0 as? Mob }.filter { $0.hitPoints > 2 }
         return livingMobs.randomElement()
@@ -175,6 +175,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func shipFireHitEnemy(fires: SKSpriteNode, enemies: Mob) {
         fires.removeFromParent()
+        
         if enemies.hit(){
             enemySum -= 1
         }
@@ -196,12 +197,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(explosionAnimation!)
         
         run(hitSound)
-        
     }
     
-    
-        func makePlayer() {
-        
+    func makePlayer() {
         player.position = CGPoint(x: size.width / 2, y: 70)
         player.setScale(0.5)
         player.zPosition = 10
@@ -266,9 +264,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func stopBackgroundMusic() {
-            backgroundMusic?.removeFromParent()
-        }
-    
+        backgroundMusic?.removeFromParent()
+    }
 }
 
 #Preview {
