@@ -28,14 +28,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.playerLives = playerLives
         self.viewModel = viewModel
         super.init(size: size)
-        
-        
-        
     }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     let background = SKSpriteNode(imageNamed: "background-space")
     var player = SKSpriteNode(imageNamed: "playerShip")
@@ -49,8 +46,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var enemySum = 0
     var backgroundMusic: SKAudioNode?
     let damageSound = SKAction.playSoundFileNamed("damageSound", waitForCompletion: false)
-    
-    
     
     override func didMove(to view: SKView) {
         
@@ -189,7 +184,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if enemies.parent == nil {
             let score: Int = Int(Double(enemies.scoreValue) * viewModel.highscoreMultiplier)
-            playerScore.wrappedValue += score
+            viewModel.increaseScore(by: score)
         }
         
         let explosionAnimation = SKSpriteNode(fileNamed: "Explosion")
