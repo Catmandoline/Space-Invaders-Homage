@@ -17,7 +17,6 @@
 		503A93162C637C59001FEA38 /* enemyHit.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 503A93152C637C59001FEA38 /* enemyHit.mp3 */; };
 		503A93172C637C59001FEA38 /* enemyHit.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 503A93152C637C59001FEA38 /* enemyHit.mp3 */; };
 		503A93182C637C59001FEA38 /* enemyHit.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 503A93152C637C59001FEA38 /* enemyHit.mp3 */; };
-		506E41DA2C661F330084DDF4 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 506E41D82C661F330084DDF4 /* Model.xcdatamodeld */; };
 		A01DC6822C62DD6200B17CD5 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = A01DC6802C62DD6200B17CD5 /* Explosion.sks */; };
 		A01DC6832C62DD6200B17CD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A01DC6812C62DD6200B17CD5 /* Assets.xcassets */; };
 		B548BFF42C66002D0049A91C /* FabulousSteampunk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B548BFF32C66002D0049A91C /* FabulousSteampunk.ttf */; };
@@ -26,6 +25,8 @@
 		B594448C2C63A290006B9F88 /* GameplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594448B2C63A290006B9F88 /* GameplayView.swift */; };
 		B594448E2C63A401006B9F88 /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594448D2C63A401006B9F88 /* GameOverView.swift */; };
 		B59444902C63A432006B9F88 /* HighScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594448F2C63A432006B9F88 /* HighScoreView.swift */; };
+		B5AD65E92C849BA800E7ADC9 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B5AD65E72C849BA800E7ADC9 /* Model.xcdatamodeld */; };
+		B5AD65EB2C849E5B00E7ADC9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B5AD65EA2C849E5B00E7ADC9 /* README.md */; };
 		D0403C822C615D6300B0B725 /* Space_Invaders_HomageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0403C812C615D6300B0B725 /* Space_Invaders_HomageApp.swift */; };
 		D0403C842C615D6300B0B725 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0403C832C615D6300B0B725 /* ContentView.swift */; };
 		D0403C862C615D6500B0B725 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0403C852C615D6500B0B725 /* Assets.xcassets */; };
@@ -58,7 +59,6 @@
 		50031AE72C64421E00C8BEDF /* backgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundMusic.mp3; sourceTree = "<group>"; };
 		502B51602C6622C900CE1202 /* damageSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = damageSound.mp3; sourceTree = "<group>"; };
 		503A93152C637C59001FEA38 /* enemyHit.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = enemyHit.mp3; sourceTree = "<group>"; };
-		506E41D92C661F330084DDF4 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		A01DC6802C62DD6200B17CD5 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
 		A01DC6812C62DD6200B17CD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B548BFF32C66002D0049A91C /* FabulousSteampunk.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FabulousSteampunk.ttf; sourceTree = "<group>"; };
@@ -68,6 +68,8 @@
 		B594448B2C63A290006B9F88 /* GameplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameplayView.swift; sourceTree = "<group>"; };
 		B594448D2C63A401006B9F88 /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
 		B594448F2C63A432006B9F88 /* HighScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreView.swift; sourceTree = "<group>"; };
+		B5AD65E82C849BA800E7ADC9 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		B5AD65EA2C849E5B00E7ADC9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D0403C7E2C615D6300B0B725 /* Space Invaders Homage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Space Invaders Homage.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0403C812C615D6300B0B725 /* Space_Invaders_HomageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Space_Invaders_HomageApp.swift; sourceTree = "<group>"; };
 		D0403C832C615D6300B0B725 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 		D0403C752C615D6300B0B725 = {
 			isa = PBXGroup;
 			children = (
+				B5AD65EA2C849E5B00E7ADC9 /* README.md */,
 				D0403C802C615D6300B0B725 /* Space Invaders Homage */,
 				D0403C912C615D6500B0B725 /* Space Invaders HomageTests */,
 				D0403C9B2C615D6500B0B725 /* Space Invaders HomageUITests */,
@@ -148,8 +151,8 @@
 				B594448D2C63A401006B9F88 /* GameOverView.swift */,
 				B594448F2C63A432006B9F88 /* HighScoreView.swift */,
 				B548BFF32C66002D0049A91C /* FabulousSteampunk.ttf */,
+				B5AD65E72C849BA800E7ADC9 /* Model.xcdatamodeld */,
 				D0403C852C615D6500B0B725 /* Assets.xcassets */,
-				506E41D82C661F330084DDF4 /* Model.xcdatamodeld */,
 				D0403C872C615D6500B0B725 /* Preview Content */,
 			);
 			path = "Space Invaders Homage";
@@ -303,6 +306,7 @@
 				503A93162C637C59001FEA38 /* enemyHit.mp3 in Resources */,
 				50031AE82C64421E00C8BEDF /* backgroundMusic.mp3 in Resources */,
 				A01DC6822C62DD6200B17CD5 /* Explosion.sks in Resources */,
+				B5AD65EB2C849E5B00E7ADC9 /* README.md in Resources */,
 				502B51612C6622C900CE1202 /* damageSound.mp3 in Resources */,
 				A01DC6832C62DD6200B17CD5 /* Assets.xcassets in Resources */,
 			);
@@ -342,7 +346,7 @@
 				D0403C842C615D6300B0B725 /* ContentView.swift in Sources */,
 				50031AE62C6427CB00C8BEDF /* DataController.swift in Sources */,
 				B59444902C63A432006B9F88 /* HighScoreView.swift in Sources */,
-				506E41DA2C661F330084DDF4 /* Model.xcdatamodeld in Sources */,
+				B5AD65E92C849BA800E7ADC9 /* Model.xcdatamodeld in Sources */,
 				B59444882C63823F006B9F88 /* Mob.swift in Sources */,
 				D0403C822C615D6300B0B725 /* Space_Invaders_HomageApp.swift in Sources */,
 			);
@@ -686,14 +690,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		506E41D82C661F330084DDF4 /* Model.xcdatamodeld */ = {
+		B5AD65E72C849BA800E7ADC9 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				506E41D92C661F330084DDF4 /* Model.xcdatamodel */,
+				B5AD65E82C849BA800E7ADC9 /* Model.xcdatamodel */,
 			);
-			currentVersion = 506E41D92C661F330084DDF4 /* Model.xcdatamodel */;
+			currentVersion = B5AD65E82C849BA800E7ADC9 /* Model.xcdatamodel */;
 			name = Model.xcdatamodeld;
-			path = "/Users/mircolange/XCode/Space-Invaders-Homage/Space Invaders Homage/Space Invaders Homage/Model.xcdatamodeld";
+			path = "/Users/reneschwarz/Documents/IOS Syntax/Space-Invaders-Homage/Space Invaders Homage/Space Invaders Homage/Model.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
